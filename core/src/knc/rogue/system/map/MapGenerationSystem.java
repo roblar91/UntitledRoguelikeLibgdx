@@ -23,7 +23,7 @@ public class MapGenerationSystem extends BaseSystem {
 
     private void createWall(int posX, int posY) {
         E.E()
-         .sprite(AssetLoader.wall)
+         .sprite(AssetLoader.getWallBrickGray())
          .terrain()
          .solid()
          .position(posX, posY);
@@ -31,7 +31,7 @@ public class MapGenerationSystem extends BaseSystem {
 
     private void createFloor(int posX, int posY) {
         E.E()
-         .sprite(AssetLoader.floor)
+         .sprite(AssetLoader.getFloorPebbleBrown())
          .terrain()
          .position(posX, posY);
     }

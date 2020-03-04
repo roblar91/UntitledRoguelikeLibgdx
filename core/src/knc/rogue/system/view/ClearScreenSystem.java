@@ -1,4 +1,4 @@
-package knc.rogue.system;
+package knc.rogue.system.view;
 
 import com.artemis.BaseSystem;
 import com.badlogic.gdx.Gdx;

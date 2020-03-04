@@ -1,17 +1,17 @@
 package knc.rogue.screen;
 
-import com.artemis.E;
 import com.artemis.SuperMapper;
 import com.artemis.World;
 import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import knc.rogue.system.CameraSpriteFollowSystem;
-import knc.rogue.system.CameraSystem;
-import knc.rogue.system.ClearScreenSystem;
-import knc.rogue.system.RenderSystem;
+import knc.rogue.system.GameStateSystem;
+import knc.rogue.system.map.MapGenerationSystem;
+import knc.rogue.system.view.CameraSpriteFollowSystem;
+import knc.rogue.system.view.CameraSystem;
+import knc.rogue.system.view.ClearScreenSystem;
+import knc.rogue.system.view.TileRenderSystem;
 
 public class GameScreen implements Screen {
     private World world;
@@ -20,10 +20,14 @@ public class GameScreen implements Screen {
         WorldConfigurationBuilder builder = new WorldConfigurationBuilder()
                 .alwaysDelayComponentRemoval(true)
                 .with(new SuperMapper(),
+                      new MapGenerationSystem(),
+                      new GameStateSystem(),
                       new ClearScreenSystem(Color.RED),
-                      new CameraSystem(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()),
+                      new CameraSystem(),
                       new CameraSpriteFollowSystem(),
-                      new RenderSystem());
+                      new TileRenderSystem()
+                );
+
         return new World(builder.build());
     }
 
@@ -31,11 +35,6 @@ public class GameScreen implements Screen {
     public void show() {
         if(world == null) {
             world = createWorld();
-
-            E.E()
-                    .sprite(new Texture("badlogic.jpg"))
-                    .position(50, 50)
-                    .cameraFollow();
         }
     }
 
@@ -47,7 +46,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        world.getSystem(CameraSystem.class).resize();
     }
 
     @Override

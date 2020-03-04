@@ -1,4 +1,4 @@
-package knc.rogue.system;
+package knc.rogue.system.view;
 
 import com.artemis.E;
 import com.artemis.annotations.All;

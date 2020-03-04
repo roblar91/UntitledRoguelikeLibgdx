@@ -3,6 +3,7 @@ package knc.rogue.system.map;
 import com.artemis.BaseSystem;
 import com.artemis.E;
 import knc.rogue.util.AssetLoader;
+import knc.rogue.util.Settings;
 
 public class MapGenerationSystem extends BaseSystem {
     @Override
@@ -23,7 +24,7 @@ public class MapGenerationSystem extends BaseSystem {
 
     private void createWall(int posX, int posY) {
         E.E()
-         .sprite(AssetLoader.getWallBrickGray())
+         .tileSprite(AssetLoader.getWallBrickGray())
          .terrain()
          .solid()
          .position(posX, posY);
@@ -31,7 +32,7 @@ public class MapGenerationSystem extends BaseSystem {
 
     private void createFloor(int posX, int posY) {
         E.E()
-         .sprite(AssetLoader.getFloorPebbleBrown())
+         .tileSprite(AssetLoader.getFloorPebbleBrown())
          .terrain()
          .position(posX, posY);
     }

@@ -5,10 +5,10 @@ import com.artemis.annotations.All;
 import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import knc.rogue.component.Position;
-import knc.rogue.component.Sprite;
+import knc.rogue.component.TileSprite;
 import knc.rogue.util.Settings;
 
-@All({Sprite.class, Position.class})
+@All({TileSprite.class, Position.class})
 public class TileRenderSystem extends IteratingSystem {
     private CameraSystem cameraSystem;
 
@@ -31,9 +31,13 @@ public class TileRenderSystem extends IteratingSystem {
 
     @Override
     protected void process(int entityId) {
-        batch.draw(E.E(entityId).getSprite().texture,
-                   E.E(entityId).getPosition().x * Settings.TILE_WIDTH,
-                   E.E(entityId).getPosition().y * Settings.TILE_HEIGHT);
+        E e = E.E(entityId);
+
+        batch.draw(e.getTileSprite().texture,
+                   e.getPosition().x * Settings.TILE_WIDTH,
+                   e.getPosition().y * Settings.TILE_HEIGHT,
+                   Settings.TILE_WIDTH,
+                   Settings.TILE_HEIGHT);
     }
 
     @Override

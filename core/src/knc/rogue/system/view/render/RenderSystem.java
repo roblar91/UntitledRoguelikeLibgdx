@@ -1,17 +1,16 @@
 package knc.rogue.system.view.render;
 
-import com.artemis.BaseSystem;
 import com.artemis.E;
+import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import knc.rogue.system.view.CameraSystem;
 import knc.rogue.util.Settings;
 
-public class RenderSystem extends BaseSystem {
-    private CameraSystem cameraSystem;
+public abstract class RenderSystem extends IteratingSystem {
+    protected CameraSystem cameraSystem;
+    protected SpriteBatch batch;
 
-    public SpriteBatch batch;
-
-    public void drawTile(int entityId) {
+    protected void drawTile(int entityId) {
         E e = E.E(entityId);
         batch.draw(e.getTileSprite().texture,
                    e.getPosition().x * Settings.TILE_WIDTH,
@@ -36,10 +35,6 @@ public class RenderSystem extends BaseSystem {
     }
 
     @Override
-    protected void processSystem() {
-    }
-
-    @Override
     protected void end() {
         super.end();
 
@@ -52,4 +47,7 @@ public class RenderSystem extends BaseSystem {
 
         batch.dispose();
     }
+
+    @Override
+    protected abstract void process(int entityId);
 }

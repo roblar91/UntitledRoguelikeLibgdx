@@ -5,7 +5,9 @@ import com.artemis.World;
 import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import knc.rogue.system.CommandSystem;
 import knc.rogue.system.GameStateSystem;
+import knc.rogue.system.KeyboardInputSystem;
 import knc.rogue.system.map.MapGenerationSystem;
 import knc.rogue.system.map.PlayerSystem;
 import knc.rogue.system.view.*;
@@ -16,19 +18,21 @@ public class GameScreen implements Screen {
 
     private World createWorld() {
         WorldConfigurationBuilder builder = new WorldConfigurationBuilder()
-                .alwaysDelayComponentRemoval(true)
                 .with(new SuperMapper(),
                       new PlayerSystem(),
                       new MapGenerationSystem(),
                       new GameStateSystem(),
+                      new KeyboardInputSystem(),
+                      new CommandSystem(),
+
+                      // Rendering
+                      new CameraSystem(),
+                      new CameraSpriteFollowSystem(),
                       new ClearScreenSystem(Color.BLACK),
-                      new RenderSystem(),
                       new TerrainRenderSystem(),
                       new MapObjectRenderSystem(),
                       new ItemRenderSystem(),
-                      new CharacterRenderSystem(),
-                      new CameraSystem(),
-                      new CameraSpriteFollowSystem()
+                      new CharacterRenderSystem()
                 );
 
         return new World(builder.build());

@@ -80,7 +80,7 @@ public abstract class Map {
     private void createEntrance(Texture texture, int posX, int posY) {
         E.E()
          .tileSprite(texture)
-         .terrain()
+         .mapObject()
          .position(posX, posY)
          .entrance();
     }
@@ -88,7 +88,7 @@ public abstract class Map {
     private void createExit(Texture texture, int posX, int posY) {
         E.E()
          .tileSprite(texture)
-         .terrain()
+         .mapObject()
          .position(posX, posY)
          .exit();
     }

@@ -9,9 +9,7 @@ import knc.rogue.system.GameStateSystem;
 import knc.rogue.system.map.MapGenerationSystem;
 import knc.rogue.system.map.PlayerSystem;
 import knc.rogue.system.view.*;
-import knc.rogue.system.view.render.CharacterRenderSystem;
-import knc.rogue.system.view.render.RenderSystem;
-import knc.rogue.system.view.render.TerrainRenderSystem;
+import knc.rogue.system.view.render.*;
 
 public class GameScreen implements Screen {
     private World world;
@@ -26,6 +24,8 @@ public class GameScreen implements Screen {
                       new ClearScreenSystem(Color.BLACK),
                       new RenderSystem(),
                       new TerrainRenderSystem(),
+                      new MapObjectRenderSystem(),
+                      new ItemRenderSystem(),
                       new CharacterRenderSystem(),
                       new CameraSystem(),
                       new CameraSpriteFollowSystem()

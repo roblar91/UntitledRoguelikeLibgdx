@@ -41,7 +41,7 @@ public class StoneMapAsset extends MapAssets {
     @Override
     public Texture getEntrance() {
         if(entrance == null) {
-            entrance = new Texture("environment/upstairs/rock_stairs_up.png");
+            entrance = new Texture("environment/transition/rock_stairs_up.png");
         }
 
         return entrance;
@@ -50,7 +50,7 @@ public class StoneMapAsset extends MapAssets {
     @Override
     public Texture getExit() {
         if(exit == null) {
-            exit = new Texture("environment/downstairs/rock_stairs_down.png");
+            exit = new Texture("environment/transition/rock_stairs_down.png");
         }
 
         return exit;

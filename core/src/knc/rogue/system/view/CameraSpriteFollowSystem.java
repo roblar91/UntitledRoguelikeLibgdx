@@ -15,8 +15,8 @@ public class CameraSpriteFollowSystem extends IteratingSystem {
     @Override
     protected void process(int entityId) {
         E e = E.E(entityId);
-        cameraSystem.getCamera().position.x = e.positionX() + Settings.TILE_WIDTH / 2;
-        cameraSystem.getCamera().position.y = e.positionY() + Settings.TILE_HEIGHT / 2;
+        cameraSystem.getCamera().position.x = e.positionX() * Settings.TILE_WIDTH + e.tileSpriteWidth() / 2;
+        cameraSystem.getCamera().position.y = e.positionY() * Settings.TILE_HEIGHT + e.tileSpriteHeight() / 2;
         cameraSystem.getCamera().update();
     }
 }

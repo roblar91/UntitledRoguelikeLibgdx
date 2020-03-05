@@ -3,15 +3,15 @@ package knc.rogue.screen;
 import com.artemis.SuperMapper;
 import com.artemis.World;
 import com.artemis.WorldConfigurationBuilder;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import knc.rogue.system.GameStateSystem;
 import knc.rogue.system.map.MapGenerationSystem;
-import knc.rogue.system.view.CameraSpriteFollowSystem;
-import knc.rogue.system.view.CameraSystem;
-import knc.rogue.system.view.ClearScreenSystem;
-import knc.rogue.system.view.TileRenderSystem;
+import knc.rogue.system.map.PlayerSystem;
+import knc.rogue.system.view.*;
+import knc.rogue.system.view.render.CharacterRenderSystem;
+import knc.rogue.system.view.render.RenderSystem;
+import knc.rogue.system.view.render.TerrainRenderSystem;
 
 public class GameScreen implements Screen {
     private World world;
@@ -20,12 +20,15 @@ public class GameScreen implements Screen {
         WorldConfigurationBuilder builder = new WorldConfigurationBuilder()
                 .alwaysDelayComponentRemoval(true)
                 .with(new SuperMapper(),
+                      new PlayerSystem(),
                       new MapGenerationSystem(),
                       new GameStateSystem(),
                       new ClearScreenSystem(Color.BLACK),
+                      new RenderSystem(),
+                      new TerrainRenderSystem(),
+                      new CharacterRenderSystem(),
                       new CameraSystem(),
-                      new CameraSpriteFollowSystem(),
-                      new TileRenderSystem()
+                      new CameraSpriteFollowSystem()
                 );
 
         return new World(builder.build());

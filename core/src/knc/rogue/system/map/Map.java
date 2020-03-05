@@ -10,10 +10,19 @@ import java.util.Random;
 public abstract class Map {
     protected Random rng = new Random();
 
-    public void generateMap(int depth, MapTheme theme) {
+    public int entranceX;
+    public int entranceY;
+    public int exitX;
+    public int exitY;
+
+    protected Map() {}
+
+    public Map generateMap(int depth, MapTheme theme) {
         MapTileType[][] blueprint = createBlueprint(depth);
         MapAssets assets = createAssets(theme);
         createTiles(blueprint, assets);
+
+        return this;
     }
 
     private MapAssets createAssets(MapTheme theme) {
@@ -37,10 +46,16 @@ public abstract class Map {
                         createFloor(assets.getFloor(), x, y);
                         break;
                     case ENTRANCE:
+                        createFloor(assets.getFloor(), x, y);
                         createEntrance(assets.getEntrance(), x, y);
+                        entranceX = x;
+                        entranceY = y;
                         break;
                     case EXIT:
+                        createFloor(assets.getFloor(), x, y);
                         createExit(assets.getExit(), x, y);
+                        exitX = x;
+                        exitY = y;
                         break;
                 }
             }

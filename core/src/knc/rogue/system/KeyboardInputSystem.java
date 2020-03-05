@@ -8,27 +8,27 @@ import knc.rogue.system.map.PlayerSystem;
 import knc.rogue.util.CompassDirection;
 
 public class KeyboardInputSystem extends BaseSystem {
-    CommandSystem commandSystem;
     PlayerSystem playerSystem;
+    MovementSystem movementSystem;
 
     @Override
     protected void processSystem() {
         if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_1)) {
-            commandSystem.queueCommand(new MoveCommand(playerSystem.player, CompassDirection.SOUTHWEST));
+            movementSystem.attemptMove(playerSystem.player, CompassDirection.SOUTHWEST);
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_2)) {
-            commandSystem.queueCommand(new MoveCommand(playerSystem.player, CompassDirection.SOUTH));
+            movementSystem.attemptMove(playerSystem.player, CompassDirection.SOUTH);
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_3)) {
-            commandSystem.queueCommand(new MoveCommand(playerSystem.player, CompassDirection.SOUTHEAST));
+            movementSystem.attemptMove(playerSystem.player, CompassDirection.SOUTHEAST);
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_4)) {
-            commandSystem.queueCommand(new MoveCommand(playerSystem.player, CompassDirection.WEST));
+            movementSystem.attemptMove(playerSystem.player, CompassDirection.WEST);
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_6)) {
-            commandSystem.queueCommand(new MoveCommand(playerSystem.player, CompassDirection.EAST));
+            movementSystem.attemptMove(playerSystem.player, CompassDirection.EAST);
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_7)) {
-            commandSystem.queueCommand(new MoveCommand(playerSystem.player, CompassDirection.NORTHWEST));
+            movementSystem.attemptMove(playerSystem.player, CompassDirection.NORTHWEST);
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_8)) {
-            commandSystem.queueCommand(new MoveCommand(playerSystem.player, CompassDirection.NORTH));
+            movementSystem.attemptMove(playerSystem.player, CompassDirection.NORTH);
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_9)) {
-            commandSystem.queueCommand(new MoveCommand(playerSystem.player, CompassDirection.NORTHEAST));
+            movementSystem.attemptMove(playerSystem.player, CompassDirection.NORTHEAST);
         }
     }
 }

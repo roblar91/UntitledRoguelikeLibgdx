@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import knc.rogue.system.CommandSystem;
 import knc.rogue.system.GameStateSystem;
 import knc.rogue.system.KeyboardInputSystem;
+import knc.rogue.system.MovementSystem;
 import knc.rogue.system.map.MapGenerationSystem;
 import knc.rogue.system.map.PlayerSystem;
 import knc.rogue.system.view.*;
@@ -19,10 +20,11 @@ public class GameScreen implements Screen {
     private World createWorld() {
         WorldConfigurationBuilder builder = new WorldConfigurationBuilder()
                 .with(new SuperMapper(),
+                      new KeyboardInputSystem(),
+                      new MovementSystem(),
                       new PlayerSystem(),
                       new MapGenerationSystem(),
                       new GameStateSystem(),
-                      new KeyboardInputSystem(),
                       new CommandSystem(),
 
                       // Rendering

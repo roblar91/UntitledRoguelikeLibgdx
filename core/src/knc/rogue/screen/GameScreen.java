@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
                 .with(new SuperMapper(),
                       new MapGenerationSystem(),
                       new GameStateSystem(),
-                      new ClearScreenSystem(Color.RED),
+                      new ClearScreenSystem(Color.BLACK),
                       new CameraSystem(),
                       new CameraSpriteFollowSystem(),
                       new TileRenderSystem()

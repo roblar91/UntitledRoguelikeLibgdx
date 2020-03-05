@@ -1,18 +1,16 @@
-package knc.rogue.util;
+package knc.rogue.asset;
 
 import com.badlogic.gdx.graphics.Texture;
 
 import java.util.Random;
 
-public final class AssetLoader {
-    private static Random rng = new Random();
+public class StoneMapAsset extends MapAssets {
+    private Random rng = new Random();
 
-    private static Texture[] floorPebbleBrown;
-    private static Texture[] wallBrickGray;
-
-    public static Texture getFloorPebbleBrown() {
-        if(floorPebbleBrown == null) {
-            floorPebbleBrown = new Texture[]{
+    @Override
+    public Texture getFloor() {
+        if(floor == null) {
+            floor = new Texture[]{
                     new Texture("environment/floor/pebble_brown0.png"),
                     new Texture("environment/floor/pebble_brown1.png"),
                     new Texture("environment/floor/pebble_brown2.png"),
@@ -24,18 +22,37 @@ public final class AssetLoader {
                     new Texture("environment/floor/pebble_brown8.png")};
         }
 
-        return floorPebbleBrown[rng.nextInt(floorPebbleBrown.length)];
+        return floor[rng.nextInt(floor.length)];
     }
 
-    public static Texture getWallBrickGray() {
-        if(wallBrickGray == null) {
-            wallBrickGray = new Texture[]{
+    @Override
+    public Texture getWall() {
+        if(wall == null) {
+            wall = new Texture[]{
                     new Texture("environment/wall/brick_gray0.png"),
                     new Texture("environment/wall/brick_gray1.png"),
                     new Texture("environment/wall/brick_gray2.png"),
                     new Texture("environment/wall/brick_gray3.png")};
         }
 
-        return wallBrickGray[rng.nextInt(wallBrickGray.length)];
+        return wall[rng.nextInt(wall.length)];
+    }
+
+    @Override
+    public Texture getEntrance() {
+        if(entrance == null) {
+            entrance = new Texture("environment/upstairs/rock_stairs_up.png");
+        }
+
+        return entrance;
+    }
+
+    @Override
+    public Texture getExit() {
+        if(exit == null) {
+            exit = new Texture("environment/downstairs/rock_stairs_down.png");
+        }
+
+        return exit;
     }
 }

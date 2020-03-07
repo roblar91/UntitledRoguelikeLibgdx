@@ -2,41 +2,47 @@ package knc.rogue.system.map;
 
 import com.artemis.E;
 import com.badlogic.gdx.graphics.Texture;
-import knc.rogue.asset.MapAssets;
-import knc.rogue.asset.StoneMapAsset;
+import knc.rogue.data.asset.MapAssets;
+import knc.rogue.data.asset.StoneMapAsset;
 
 import java.util.Random;
 
-public abstract class Map {
+public abstract class MapGenerator {
     protected Random rng = new Random();
+    protected E e;
+    protected int depth;
+    protected MapTheme theme;
+    protected MapTerrainType[][] terrainBlueprint;
+    protected MapAssets assets;
 
-    public int entranceX;
-    public int entranceY;
-    public int exitX;
-    public int exitY;
+    protected MapGenerator() {}
 
-    protected Map() {}
+    public E generateMap(int depth, MapTheme theme) {
+        this.e = E.E();
+        this.depth = depth;
+        this.theme = theme;
 
-    public Map generateMap(int depth, MapTheme theme) {
-        MapTileType[][] blueprint = createBlueprint(depth);
-        MapAssets assets = createAssets(theme);
-        createTiles(blueprint, assets);
+        terrainBlueprint = createTerrainBlueprint();
+        assets = createAssets();
 
-        return this;
+        createTiles();
+        createObjects();
+
+        return e.mapEntity(depth);
     }
 
-    private MapAssets createAssets(MapTheme theme) {
-        if(theme == MapTheme.STONE_SIMPLE) {
-            return new StoneMapAsset();
+    private MapAssets createAssets() {
+        switch(theme) {
+            case STONE_SIMPLE:
+            default:
+                return new StoneMapAsset();
         }
-
-        return null;
     }
 
-    private void createTiles(MapTileType[][] blueprint, MapAssets assets) {
-        for(int x = 0; x < blueprint.length; x++) {
-            for(int y = 0; y < blueprint[0].length; y++) {
-                switch(blueprint[x][y]) {
+    private void createTiles() {
+        for(int x = 0; x < terrainBlueprint.length; x++) {
+            for(int y = 0; y < terrainBlueprint[0].length; y++) {
+                switch(terrainBlueprint[x][y]) {
                     case NONE:
                         break;
                     case WALL:
@@ -48,18 +54,18 @@ public abstract class Map {
                     case ENTRANCE:
                         createFloor(assets.getFloor(), x, y);
                         createEntrance(assets.getEntrance(), x, y);
-                        entranceX = x;
-                        entranceY = y;
                         break;
                     case EXIT:
                         createFloor(assets.getFloor(), x, y);
                         createExit(assets.getExit(), x, y);
-                        exitX = x;
-                        exitY = y;
                         break;
                 }
             }
         }
+    }
+
+    private void createObjects() {
+
     }
 
     private void createWall(Texture texture, int posX, int posY) {
@@ -67,21 +73,21 @@ public abstract class Map {
          .tileSprite(texture)
          .terrain()
          .solid()
-         .position(posX, posY);
+         .position(posX, posY, e.id());
     }
 
     private void createFloor(Texture texture, int posX, int posY) {
         E.E()
          .tileSprite(texture)
          .terrain()
-         .position(posX, posY);
+         .position(posX, posY, e.id());
     }
 
     private void createEntrance(Texture texture, int posX, int posY) {
         E.E()
          .tileSprite(texture)
          .mapObject()
-         .position(posX, posY)
+         .position(posX, posY, e.id())
          .entrance();
     }
 
@@ -89,9 +95,10 @@ public abstract class Map {
         E.E()
          .tileSprite(texture)
          .mapObject()
-         .position(posX, posY)
+         .position(posX, posY, e.id())
          .exit();
     }
 
-    protected abstract MapTileType[][] createBlueprint(int depth);
+    protected abstract MapTerrainType[][] createTerrainBlueprint();
+    protected abstract MapObjectType[][] createObjectBlueprint();
 }

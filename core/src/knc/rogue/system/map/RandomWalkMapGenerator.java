@@ -1,32 +1,32 @@
 package knc.rogue.system.map;
 
-public class RandomWalkMap extends Map {
+public class RandomWalkMapGenerator extends MapGenerator {
     @Override
-    protected MapTileType[][] createBlueprint(int depth) {
+    protected MapTerrainType[][] createTerrainBlueprint() {
         int sizeX = rng.nextInt(25) + 50;
         int sizeY = rng.nextInt(50) + 70;
         int openSpace = 0;
         int openSpaceTarget = (sizeX * sizeY) * (rng.nextInt(20) + 20) / 100;
 
         // Initialize all tiles to walls
-        MapTileType[][] blueprint = new MapTileType[sizeX][sizeY];
+        MapTerrainType[][] blueprint = new MapTerrainType[sizeX][sizeY];
         for(int x=0; x<sizeX; x++) {
             for(int y=0; y<sizeY; y++) {
-                blueprint[x][y] = MapTileType.NONE;
+                blueprint[x][y] = MapTerrainType.NONE;
             }
         }
 
         // Make paths
         int currentX = rng.nextInt(sizeX-2) + 1;
         int currentY = rng.nextInt(sizeY-2) + 1;
-        blueprint[currentX][currentY] = MapTileType.ENTRANCE;
+        blueprint[currentX][currentY] = MapTerrainType.ENTRANCE;
 
         while(openSpace < openSpaceTarget) {
-            if(blueprint[currentX][currentY] == MapTileType.NONE) {
-                blueprint[currentX][currentY] = MapTileType.FLOOR;
+            if(blueprint[currentX][currentY] == MapTerrainType.NONE) {
+                blueprint[currentX][currentY] = MapTerrainType.FLOOR;
                 openSpace++;
                 if(openSpace == openSpaceTarget){
-                    blueprint[currentX][currentY] = MapTileType.EXIT;
+                    blueprint[currentX][currentY] = MapTerrainType.EXIT;
                 }
             }
 
@@ -53,9 +53,9 @@ public class RandomWalkMap extends Map {
 
         for(int x=0; x<sizeX; x++) {
             for(int y=0; y<sizeY; y++) {
-                if(blueprint[x][y] == MapTileType.FLOOR
-                   || blueprint[x][y] == MapTileType.ENTRANCE
-                   || blueprint[x][y] == MapTileType.EXIT)
+                if(blueprint[x][y] == MapTerrainType.FLOOR
+                   || blueprint[x][y] == MapTerrainType.ENTRANCE
+                   || blueprint[x][y] == MapTerrainType.EXIT)
                     addWallsAdjacentToGround(blueprint, x, y);
             }
         }
@@ -63,7 +63,7 @@ public class RandomWalkMap extends Map {
         return blueprint;
     }
 
-    private void addWallsAdjacentToGround(MapTileType[][] blueprint, int x, int y) {
+    private void addWallsAdjacentToGround(MapTerrainType[][] blueprint, int x, int y) {
         checkWall(blueprint, x-1, y-1);
         checkWall(blueprint, x-1, y);
         checkWall(blueprint, x-1, y+1);
@@ -75,9 +75,14 @@ public class RandomWalkMap extends Map {
         checkWall(blueprint, x+1, y+1);
     }
 
-    private void checkWall(MapTileType[][] blueprint, int x, int y) {
-        if(blueprint[x][y] == MapTileType.NONE) {
-            blueprint[x][y] = MapTileType.WALL;
+    private void checkWall(MapTerrainType[][] blueprint, int x, int y) {
+        if(blueprint[x][y] == MapTerrainType.NONE) {
+            blueprint[x][y] = MapTerrainType.WALL;
         }
+    }
+
+    @Override
+    protected MapObjectType[][] createObjectBlueprint() {
+        return new MapObjectType[0][];
     }
 }

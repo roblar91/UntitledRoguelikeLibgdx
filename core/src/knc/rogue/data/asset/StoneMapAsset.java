@@ -1,4 +1,4 @@
-package knc.rogue.asset;
+package knc.rogue.data.asset;
 
 import com.badlogic.gdx.graphics.Texture;
 

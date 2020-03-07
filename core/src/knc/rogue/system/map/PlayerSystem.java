@@ -2,10 +2,9 @@ package knc.rogue.system.map;
 
 import com.artemis.BaseSystem;
 import com.artemis.E;
-import knc.rogue.asset.PlayerAssets;
+import knc.rogue.data.asset.PlayerAssets;
 
 public class PlayerSystem extends BaseSystem {
-    private PlayerAssets assets = new PlayerAssets();
     public E player;
 
     @Override
@@ -18,7 +17,7 @@ public class PlayerSystem extends BaseSystem {
                   .solid()
                   .cameraFollow()
                   .character()
-                  .tileSprite(assets.getHumanFemale());
+                  .tileSprite(PlayerAssets.getHumanFemale());
         }
     }
 

@@ -3,13 +3,12 @@ package knc.rogue.system;
 import com.artemis.BaseSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import knc.rogue.command.MoveCommand;
 import knc.rogue.system.map.PlayerSystem;
 import knc.rogue.util.CompassDirection;
 
 public class KeyboardInputSystem extends BaseSystem {
-    PlayerSystem playerSystem;
-    MovementSystem movementSystem;
+    private PlayerSystem playerSystem;
+    private MovementSystem movementSystem;
 
     @Override
     protected void processSystem() {

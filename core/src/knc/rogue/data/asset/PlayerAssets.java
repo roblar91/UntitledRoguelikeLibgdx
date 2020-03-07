@@ -1,11 +1,11 @@
-package knc.rogue.asset;
+package knc.rogue.data.asset;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class PlayerAssets {
-    private Texture humanFemale;
+public final class PlayerAssets {
+    private static Texture humanFemale;
 
-    public Texture getHumanFemale() {
+    public static Texture getHumanFemale() {
         if(humanFemale == null) {
             humanFemale = new Texture("character/player/human_f.png");
         }

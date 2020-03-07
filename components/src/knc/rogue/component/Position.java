@@ -5,7 +5,7 @@ import com.artemis.Component;
 public class Position extends Component {
     public int x;
     public int y;
-    public int areaId;
+    public int areaId = -1;
 
     public void set(int x, int y, int areaId) {
         set(x, y);

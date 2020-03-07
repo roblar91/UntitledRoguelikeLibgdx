@@ -4,11 +4,14 @@ import com.badlogic.gdx.graphics.Texture;
 
 import java.util.Random;
 
-public class StoneMapAsset extends MapAssets {
-    private Random rng = new Random();
+public class StoneMapAsset {
+    private static Random rng = new Random();
+    private static Texture[] floor;
+    private static Texture[] wall;
+    private static Texture entrance;
+    private static Texture exit;
 
-    @Override
-    public Texture getFloor() {
+    public static Texture getFloor() {
         if(floor == null) {
             floor = new Texture[]{
                     new Texture("environment/floor/pebble_brown0.png"),
@@ -25,8 +28,7 @@ public class StoneMapAsset extends MapAssets {
         return floor[rng.nextInt(floor.length)];
     }
 
-    @Override
-    public Texture getWall() {
+    public static Texture getWall() {
         if(wall == null) {
             wall = new Texture[]{
                     new Texture("environment/wall/brick_gray0.png"),
@@ -38,8 +40,7 @@ public class StoneMapAsset extends MapAssets {
         return wall[rng.nextInt(wall.length)];
     }
 
-    @Override
-    public Texture getEntrance() {
+    public static Texture getEntrance() {
         if(entrance == null) {
             entrance = new Texture("environment/transition/rock_stairs_up.png");
         }
@@ -47,8 +48,7 @@ public class StoneMapAsset extends MapAssets {
         return entrance;
     }
 
-    @Override
-    public Texture getExit() {
+    public static Texture getExit() {
         if(exit == null) {
             exit = new Texture("environment/transition/rock_stairs_down.png");
         }

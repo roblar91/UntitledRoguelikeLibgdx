@@ -4,16 +4,16 @@ import com.artemis.E;
 import knc.rogue.data.asset.MonsterAssets;
 
 public final class MonsterFactory {
-    public static E createMonster(MonsterType type,
-                                  int areaId,
+    public static E createMonster(SpawnType type,
                                   int posX,
-                                  int posY) {
+                                  int posY,
+                                  int areaId) {
 
         E e = E.E()
                .position(posX, posY);
 
         switch(type) {
-            case BAT:
+            case MONSTER_BAT:
                 e.tileSprite(MonsterAssets.getBat());
                 break;
         }

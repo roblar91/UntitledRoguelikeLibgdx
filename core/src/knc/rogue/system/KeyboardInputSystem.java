@@ -3,7 +3,6 @@ package knc.rogue.system;
 import com.artemis.BaseSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import knc.rogue.system.map.PlayerSystem;
 import knc.rogue.util.CompassDirection;
 
 public class KeyboardInputSystem extends BaseSystem {

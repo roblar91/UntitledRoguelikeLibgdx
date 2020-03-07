@@ -4,8 +4,8 @@ import com.artemis.Aspect;
 import com.artemis.BaseSystem;
 import com.artemis.E;
 import knc.rogue.component.Entrance;
+import knc.rogue.component.MapEntity.MapType;
 import knc.rogue.system.map.MapGenerationSystem;
-import knc.rogue.system.map.PlayerSystem;
 
 public class GameStateSystem extends BaseSystem {
     private MapGenerationSystem mapGenerationSystem;
@@ -17,7 +17,7 @@ public class GameStateSystem extends BaseSystem {
     protected void initialize() {
         super.initialize();
 
-        currentMap = mapGenerationSystem.generateMap(1);
+        currentMap = mapGenerationSystem.generateMap(MapType.FOREST_1);
         positionPlayerAtEntrance();
     }
 

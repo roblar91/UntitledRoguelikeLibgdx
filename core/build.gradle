@@ -13,9 +13,6 @@ sourceSets.main.java.srcDirs = [ "src/",fluidOutputDir ]
 
 eclipse.project.name = appName + "-core"
 
-// Replace existing line.
-sourceSets.main.java.srcDirs = ["src/",fluidOutputDir]
-
 fluid {
     generatedSourcesDirectory = fluidOutputDir
     classpath = sourceSets.main.compileClasspath

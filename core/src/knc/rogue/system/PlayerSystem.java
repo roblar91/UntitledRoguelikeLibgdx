@@ -1,4 +1,4 @@
-package knc.rogue.system.map;
+package knc.rogue.system;
 
 import com.artemis.BaseSystem;
 import com.artemis.E;

@@ -10,7 +10,7 @@ import knc.rogue.system.GameStateSystem;
 import knc.rogue.system.KeyboardInputSystem;
 import knc.rogue.system.MovementSystem;
 import knc.rogue.system.map.MapGenerationSystem;
-import knc.rogue.system.map.PlayerSystem;
+import knc.rogue.system.PlayerSystem;
 import knc.rogue.system.view.*;
 import knc.rogue.system.view.render.*;
 

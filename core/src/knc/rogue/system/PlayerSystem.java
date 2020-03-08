@@ -14,7 +14,6 @@ public class PlayerSystem extends BaseSystem {
         if(player == null) {
             player = E.E();
             player.player()
-                  .solid()
                   .cameraFollow()
                   .character()
                   .tileSprite(PlayerAssets.getHumanFemale());

@@ -13,10 +13,10 @@ public abstract class RenderSystem extends IteratingSystem {
     protected void drawTile(int entityId) {
         E e = E.E(entityId);
         batch.draw(e.getTileSprite().texture,
-                   e.getPosition().x * Settings.TILE_WIDTH,
-                   e.getPosition().y * Settings.TILE_HEIGHT,
-                   Settings.TILE_WIDTH,
-                   Settings.TILE_HEIGHT);
+                   e.getPosition().x * Settings.TILE_WIDTH * Settings.TILE_SCALE,
+                   e.getPosition().y * Settings.TILE_HEIGHT * Settings.TILE_SCALE,
+                   Settings.TILE_WIDTH * Settings.TILE_SCALE,
+                   Settings.TILE_HEIGHT * Settings.TILE_SCALE);
     }
 
     @Override

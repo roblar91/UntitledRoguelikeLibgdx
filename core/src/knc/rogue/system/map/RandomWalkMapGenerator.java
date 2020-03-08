@@ -72,6 +72,11 @@ public class RandomWalkMapGenerator extends MapGenerator {
             }
         }
 
+        // Spawn some bats for testing purpose
+        for(int i = 0; i < 20; i++) {
+            spawnBat(blueprint);
+        }
+
         return blueprint;
     }
 
@@ -90,6 +95,18 @@ public class RandomWalkMapGenerator extends MapGenerator {
     private void checkWall(List<List<Queue<SpawnType>>> blueprint, int x, int y) {
         if(blueprint.get(x).get(y).isEmpty()) {
             blueprint.get(x).get(y).add(SpawnType.WALL_STONE);
+        }
+    }
+
+    private void spawnBat(List<List<Queue<SpawnType>>> blueprint) {
+        for(int i = 0; i < 100; i++) {
+            int x = rng.nextInt(blueprint.size());
+            int y = rng.nextInt(blueprint.get(0).size());
+
+            if(blueprint.get(x).get(y).contains(SpawnType.FLOOR_STONE)) {
+                blueprint.get(x).get(y).add(SpawnType.MONSTER_BAT);
+                break;
+            }
         }
     }
 }

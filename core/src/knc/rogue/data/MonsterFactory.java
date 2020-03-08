@@ -10,7 +10,8 @@ public final class MonsterFactory {
                                   int areaId) {
 
         E e = E.E()
-               .position(posX, posY);
+               .position(posX, posY)
+               .character();
 
         switch(type) {
             case MONSTER_BAT:

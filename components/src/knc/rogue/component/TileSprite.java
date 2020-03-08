@@ -5,10 +5,14 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class TileSprite extends Component {
     public Texture texture;
-    public int width;
-    public int height;
+    public float scale;
+
+    public void set(Texture texture, float scale) {
+        this.texture = texture;
+        this.scale = scale;
+    }
 
     public void set(Texture texture) {
-        this.texture = texture;
+        set(texture, 1);
     }
 }

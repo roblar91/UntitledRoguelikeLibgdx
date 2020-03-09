@@ -5,12 +5,8 @@ import com.artemis.World;
 import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
-import knc.rogue.system.CommandSystem;
-import knc.rogue.system.GameStateSystem;
-import knc.rogue.system.KeyboardInputSystem;
-import knc.rogue.system.MovementSystem;
+import knc.rogue.system.*;
 import knc.rogue.system.map.MapGenerationSystem;
-import knc.rogue.system.PlayerSystem;
 import knc.rogue.system.view.*;
 import knc.rogue.system.view.render.*;
 
@@ -26,6 +22,7 @@ public class GameScreen implements Screen {
                       new MapGenerationSystem(),
                       new GameStateSystem(),
                       new CommandSystem(),
+                      new DeathSystem(),
 
                       // Rendering
                       new CameraSystem(),

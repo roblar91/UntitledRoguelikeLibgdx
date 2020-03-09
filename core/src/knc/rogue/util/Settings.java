@@ -6,6 +6,8 @@ public final class Settings {
 
     public static int WINDOW_WIDTH = 1024;
     public static int WINDOW_HEIGHT = 768;
-    public static String TITLE = "Rogue";
     public static float TILE_SCALE = 1f;
+    public static String TITLE = "Rogue";
+
+    public static boolean BUMP_ATTACK = true;
 }

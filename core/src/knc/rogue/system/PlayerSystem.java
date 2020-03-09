@@ -3,6 +3,7 @@ package knc.rogue.system;
 import com.artemis.BaseSystem;
 import com.artemis.E;
 import knc.rogue.data.asset.PlayerAssets;
+import knc.rogue.util.Formulae;
 
 public class PlayerSystem extends BaseSystem {
     public E player;
@@ -16,7 +17,13 @@ public class PlayerSystem extends BaseSystem {
             player.player()
                   .cameraFollow()
                   .character()
-                  .tileSprite(PlayerAssets.getHumanFemale());
+                  .name("Player")
+                  .tileSprite(PlayerAssets.getHumanFemale())
+                  .meleeAttack()
+                  .baseHealth(100)
+                  .baseConstitution(10)
+                  .baseStrength(10)
+                  .health(Formulae.calculateMaxHealth(player));
         }
     }
 

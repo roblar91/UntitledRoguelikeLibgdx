@@ -20,6 +20,7 @@ A roguelike built using [libgdx](https://github.com/libgdx/libgdx) and [Artemis-
 - Active skills
 - Talents
 - Customizable hotkeys
+- Pathfinding
 
 ###### User Interface
 - Player stats

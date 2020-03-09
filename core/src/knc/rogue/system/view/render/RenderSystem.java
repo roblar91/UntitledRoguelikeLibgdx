@@ -10,11 +10,9 @@ import knc.rogue.util.Settings;
 public abstract class RenderSystem extends IteratingSystem {
     protected CameraSystem cameraSystem;
     protected SpriteBatch batch;
-    private FOVSystem fovSystem;
+    protected FOVSystem fovSystem;
 
-    protected void drawTile(int entityId) {
-        E e = E.E(entityId);
-        float brightness = (float) fovSystem.fovMap[e.positionX()][e.positionY()];
+    protected void drawTile(E e, float brightness) {
         batch.setColor(brightness, brightness, brightness, 1f);
         batch.draw(e.getTileSprite().texture,
                    e.getPosition().x * Settings.TILE_WIDTH * Settings.TILE_SCALE,

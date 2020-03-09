@@ -1,5 +1,5 @@
 # Untitled Roguelike Libgdx
-A roguelike built using [libgdx](https://github.com/libgdx/libgdx) and [Artemis-odb](https://github.com/junkdog/artemis-odb)
+A roguelike built using [libGDX](https://github.com/libgdx/libgdx), [Artemis-odb](https://github.com/junkdog/artemis-odb) and [SquidLib](https://github.com/SquidPony/SquidLib)
 
 #### Rough TODO list
 
@@ -21,7 +21,7 @@ A roguelike built using [libgdx](https://github.com/libgdx/libgdx) and [Artemis-
 - Customizable hotkeys
 - Pathfinding
 - Logging with various levels
-- Line of sight
+- ~~Line of sight~~ OK
 - Actions generate sound
 - Save
 - Unload entities when area changes

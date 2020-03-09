@@ -23,7 +23,9 @@ public class PlayerSystem extends BaseSystem {
                   .baseHealth(100)
                   .baseConstitution(10)
                   .baseStrength(10)
-                  .health(Formulae.calculateMaxHealth(player));
+                  .health(Formulae.calculateMaxHealth(player))
+                  .sight(8)
+                  .justMoved();
         }
     }
 

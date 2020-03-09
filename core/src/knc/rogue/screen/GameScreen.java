@@ -25,13 +25,15 @@ public class GameScreen implements Screen {
                       new DeathSystem(),
 
                       // Rendering
+                      new FOVSystem(),
                       new CameraSystem(),
                       new CameraSpriteFollowSystem(),
                       new ClearScreenSystem(Color.BLACK),
                       new TerrainRenderSystem(),
                       new MapObjectRenderSystem(),
                       new ItemRenderSystem(),
-                      new CharacterRenderSystem()
+                      new CharacterRenderSystem(),
+                      new ComponentCleanupSystem()
                 );
 
         return new World(builder.build());

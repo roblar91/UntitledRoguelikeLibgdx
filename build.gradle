@@ -48,7 +48,7 @@ project(":desktop") {
         implementation project(":core")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        
+
     }
 }
 
@@ -63,7 +63,22 @@ project(":html") {
         api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
-        
+
+        // artemis-odb core
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion"
+        compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion:sources"
+        compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion:sources"
+
+        // artemis-odb  + serialization
+        compile "net.onedaybeard.artemis:artemis-odb-serializer:$artemisVersion:sources"
+        compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion:sources"
+
+        // Artemis-odb optional functionality (systems, events, components).
+        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion:sources"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion:sources"
     }
 }
 
@@ -98,6 +113,9 @@ project(":core") {
         compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion"
         compileOnly "net.onedaybeard.artemis:artemis-fluid-core:$artemisVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
+        compile 'com.squidpony:squidlib-util:3.0.0-b10'
+        compile 'com.squidpony:squidlib:3.0.0-b10'
+        compile 'com.squidpony:squidlib-extra:3.0.0-b10'
     }
 }
 

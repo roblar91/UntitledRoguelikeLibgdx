@@ -16,11 +16,12 @@ public abstract class MapGenerator {
     protected MapGenerator() {}
 
     public E generateMap(MapType mapType) {
-        E e = E.E();
+        List<List<Queue<SpawnType>>> blueprint = createBlueprint();
 
-        populateMap(e.id(), createBlueprint());
+        E e = E.E().mapEntity(mapType, blueprint.size(), blueprint.get(0).size());
+        populateMap(e.id(), blueprint);
 
-        return e.mapEntity(mapType);
+        return e;
     }
 
     private void populateMap(int areaId, List<List<Queue<SpawnType>>> blueprint) {

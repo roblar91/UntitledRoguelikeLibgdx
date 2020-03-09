@@ -4,9 +4,13 @@ import com.artemis.Component;
 
 public class MapEntity extends Component {
     public MapType mapType;
+    public int columns;
+    public int rows;
 
-    public void set(MapType mapType) {
+    public void set(MapType mapType, int columns, int rows) {
         this.mapType = mapType;
+        this.columns = columns;
+        this.rows = rows;
     }
 
     public enum MapType {

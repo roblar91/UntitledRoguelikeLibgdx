@@ -13,6 +13,6 @@ public class TileSprite extends Component {
     }
 
     public void set(Texture texture) {
-        set(texture, 1);
+        set(texture, 1f);
     }
 }

@@ -15,5 +15,6 @@ public class MoveCommand implements Command {
     @Override
     public void execute() {
         actor.position(actor.positionX() + direction.dX, actor.positionY() + direction.dY);
+        actor.justMoved();
     }
 }

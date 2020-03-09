@@ -4,14 +4,18 @@ import com.artemis.E;
 import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import knc.rogue.system.view.CameraSystem;
+import knc.rogue.system.view.FOVSystem;
 import knc.rogue.util.Settings;
 
 public abstract class RenderSystem extends IteratingSystem {
     protected CameraSystem cameraSystem;
     protected SpriteBatch batch;
+    private FOVSystem fovSystem;
 
     protected void drawTile(int entityId) {
         E e = E.E(entityId);
+        float brightness = (float) fovSystem.fovMap[e.positionX()][e.positionY()];
+        batch.setColor(brightness, brightness, brightness, 1f);
         batch.draw(e.getTileSprite().texture,
                    e.getPosition().x * Settings.TILE_WIDTH * Settings.TILE_SCALE,
                    e.getPosition().y * Settings.TILE_HEIGHT * Settings.TILE_SCALE,

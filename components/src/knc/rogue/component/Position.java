@@ -16,4 +16,9 @@ public class Position extends Component {
         this.x = x;
         this.y = y;
     }
+
+    @Override
+    public String toString() {
+        return "(x, y, area) = (" + x + ", " + y + ", " + areaId + ")";
+    }
 }

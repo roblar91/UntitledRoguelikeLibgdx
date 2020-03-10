@@ -2,9 +2,14 @@ package knc.rogue.data;
 
 import com.artemis.E;
 import knc.rogue.data.asset.MonsterAssets;
+import knc.rogue.system.KeyboardInputSystem;
 import knc.rogue.util.Formulae;
 
+import java.util.logging.Logger;
+
 public final class MonsterFactory {
+    private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
+
     public static E createMonster(SpawnType type,
                                   int posX,
                                   int posY,
@@ -28,6 +33,7 @@ public final class MonsterFactory {
                 break;
         }
 
+        LOGGER.fine("Monster " + e.nameName() + " created at position  " + e.getPosition().toString());
         return e;
     }
 }

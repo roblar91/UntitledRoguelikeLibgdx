@@ -2,8 +2,13 @@ package knc.rogue.data;
 
 import com.artemis.E;
 import knc.rogue.data.asset.StoneMapAsset;
+import knc.rogue.system.KeyboardInputSystem;
+
+import java.util.logging.Logger;
 
 public final class ObjectFactory {
+    private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
+
     public static E createObject(SpawnType type,
                                   int posX,
                                   int posY,
@@ -24,6 +29,7 @@ public final class ObjectFactory {
                 break;
         }
 
+        LOGGER.fine("Object created at position  " + e.getPosition().toString());
         return e;
     }
 }

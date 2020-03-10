@@ -7,7 +7,10 @@ import knc.rogue.component.Entrance;
 import knc.rogue.component.MapEntity.MapType;
 import knc.rogue.system.map.MapGenerationSystem;
 
+import java.util.logging.Logger;
+
 public class GameStateSystem extends BaseSystem {
+    private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
     private MapGenerationSystem mapGenerationSystem;
     private PlayerSystem playerSystem;
 
@@ -26,6 +29,8 @@ public class GameStateSystem extends BaseSystem {
     }
 
     private void positionPlayerAtEntrance() {
+        LOGGER.info("Positioning player at entrance");
+
         E.withAspect(Aspect.all(Entrance.class)).forEach(e -> {
             if(e.getPosition().areaId == currentMap.id()) {
                 playerSystem.player.position(e.positionX(), e.positionY());

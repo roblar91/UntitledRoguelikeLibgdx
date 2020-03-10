@@ -10,10 +10,15 @@ import knc.rogue.system.map.MapGenerationSystem;
 import knc.rogue.system.view.*;
 import knc.rogue.system.view.render.*;
 
+import java.util.logging.Logger;
+
 public class GameScreen implements Screen {
+    private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
     private World world;
 
     private World createWorld() {
+        LOGGER.info("Creating world");
+
         WorldConfigurationBuilder builder = new WorldConfigurationBuilder()
                 .with(new SuperMapper(),
                       new KeyboardInputSystem(),

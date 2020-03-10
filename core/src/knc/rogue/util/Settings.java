@@ -1,5 +1,7 @@
 package knc.rogue.util;
 
+import java.util.logging.Level;
+
 public final class Settings {
     public static final int TILE_WIDTH = 32;
     public static final int TILE_HEIGHT = 32;
@@ -12,4 +14,5 @@ public final class Settings {
     public static boolean BUMP_ATTACK = true;
     public static float BRIGHTNESS_BOOST = 0.5f;
     public static float BRIGHTNESS_MIN = 0.3f;
+    public static Level LOG_LEVEL = Level.INFO;
 }

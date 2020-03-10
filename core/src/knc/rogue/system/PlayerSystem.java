@@ -5,7 +5,10 @@ import com.artemis.E;
 import knc.rogue.data.asset.PlayerAssets;
 import knc.rogue.util.Formulae;
 
+import java.util.logging.Logger;
+
 public class PlayerSystem extends BaseSystem {
+    private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
     public E player;
 
     @Override
@@ -13,6 +16,7 @@ public class PlayerSystem extends BaseSystem {
         super.initialize();
 
         if(player == null) {
+            LOGGER.info("Creating player entity");
             player = E.E();
             player.player()
                   .cameraFollow()

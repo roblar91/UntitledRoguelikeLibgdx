@@ -20,12 +20,13 @@ A roguelike built using [libGDX](https://github.com/libgdx/libgdx), [Artemis-odb
 - Monster drops
 - Customizable hotkeys
 - Pathfinding
-- Logging with various levels
+- ~~Logging with various levels~~ OK
 - ~~Line of sight~~ OK
 - Actions generate sound
 - Save
 - Unload entities when area changes
 - Make sure unused components, entities and GDX assets are destroyed
+- Energy system. A character gets to act when energy is full
 
 ###### Player
 - Experience & levels

@@ -12,30 +12,39 @@ import knc.rogue.component.Solid;
 import knc.rogue.util.CompassDirection;
 import knc.rogue.util.Settings;
 
+import java.util.logging.Logger;
+
 public class MovementSystem extends BaseSystem {
+    private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
     private CommandSystem commandSystem;
 
     private Aspect.Builder solidAspect = Aspect.all(Solid.class, Position.class);
     private Aspect.Builder hostileAspect = Aspect.all(Hostile.class, Alive.class, Position.class);
 
     public void attemptMove(E actor, CompassDirection direction) {
+        LOGGER.fine("[Entity " + actor.id() + "] Attempting move");
+
         int targetX = actor.positionX() + direction.dX;
         int targetY = actor.positionY() + direction.dY;
 
         if(checkTargetPositionForAspect(targetX, targetY, hostileAspect)) {
+            LOGGER.fine("[Entity " + actor.id() +"]Hostile at destination");
+
             if(Settings.BUMP_ATTACK) {
+                LOGGER.fine("[Entity " + actor.id() +"]BUMP_ATTACK=true: Issuing attack command");
                 commandSystem.queueCommand(new MeleeAttackCommand(actor, getEntityWithAspectAtPosition(targetX, targetY, hostileAspect)));
             } else {
-                System.out.println("Target occupied");
+                LOGGER.info("[Entity " + actor.id() +"]BUMP_ATTACK=false: Destination occupied");
             }
 
             return;
         }
 
         if(!checkTargetPositionForAspect(targetX, targetY, solidAspect)) {
+            LOGGER.fine("[Entity " + actor.id() +"]Issuing move command");
             commandSystem.queueCommand(new MoveCommand(actor, direction));
         } else {
-            System.out.println("Path blocked");
+            LOGGER.info("[Entity " + actor.id() +"]Solid at destination: Can not move");
         }
     }
 

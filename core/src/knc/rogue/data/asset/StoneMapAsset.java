@@ -14,15 +14,24 @@ public class StoneMapAsset {
     public static Texture getFloor() {
         if(floor == null) {
             floor = new Texture[]{
-                    new Texture("environment/floor/pebble_brown0.png"),
-                    new Texture("environment/floor/pebble_brown1.png"),
-                    new Texture("environment/floor/pebble_brown2.png"),
-                    new Texture("environment/floor/pebble_brown3.png"),
-                    new Texture("environment/floor/pebble_brown4.png"),
-                    new Texture("environment/floor/pebble_brown5.png"),
-                    new Texture("environment/floor/pebble_brown6.png"),
-                    new Texture("environment/floor/pebble_brown7.png"),
-                    new Texture("environment/floor/pebble_brown8.png")};
+                    new Texture("sprites/dungeon/floor/pebble_brown_0_new.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_1_new.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_2_new.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_3_new.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_4_new.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_5_new.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_6_new.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_7_new.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_8_new.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_0_old.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_1_old.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_2_old.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_3_old.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_4_old.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_5_old.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_6_old.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_7_old.png"),
+                    new Texture("sprites/dungeon/floor/pebble_brown_8_old.png")};
         }
 
         return floor[rng.nextInt(floor.length)];
@@ -31,10 +40,10 @@ public class StoneMapAsset {
     public static Texture getWall() {
         if(wall == null) {
             wall = new Texture[]{
-                    new Texture("environment/wall/brick_gray0.png"),
-                    new Texture("environment/wall/brick_gray1.png"),
-                    new Texture("environment/wall/brick_gray2.png"),
-                    new Texture("environment/wall/brick_gray3.png")};
+                    new Texture("sprites/dungeon/wall/brick_gray_0.png"),
+                    new Texture("sprites/dungeon/wall/brick_gray_1.png"),
+                    new Texture("sprites/dungeon/wall/brick_gray_2.png"),
+                    new Texture("sprites/dungeon/wall/brick_gray_3.png")};
         }
 
         return wall[rng.nextInt(wall.length)];
@@ -42,7 +51,7 @@ public class StoneMapAsset {
 
     public static Texture getEntrance() {
         if(entrance == null) {
-            entrance = new Texture("environment/transition/rock_stairs_up.png");
+            entrance = new Texture("sprites/dungeon/gateways/stone_stairs_up.png");
         }
 
         return entrance;
@@ -50,7 +59,7 @@ public class StoneMapAsset {
 
     public static Texture getExit() {
         if(exit == null) {
-            exit = new Texture("environment/transition/rock_stairs_down.png");
+            exit = new Texture("sprites/dungeon/gateways/stone_stairs_down.png");
         }
 
         return exit;

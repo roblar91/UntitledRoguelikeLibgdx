@@ -7,7 +7,7 @@ public final class MonsterAssets {
 
     public static Texture getBat() {
         if(bat == null) {
-            bat = new Texture("character/monster/bat.png");
+            bat = new Texture("sprites/monster/animals/bat.png");
         }
 
         return bat;

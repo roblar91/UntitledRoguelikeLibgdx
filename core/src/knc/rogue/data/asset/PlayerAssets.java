@@ -7,7 +7,7 @@ public final class PlayerAssets {
 
     public static Texture getHumanFemale() {
         if(humanFemale == null) {
-            humanFemale = new Texture("character/player/human_f.png");
+            humanFemale = new Texture("sprites/player/base/human_female.png");
         }
 
         return humanFemale;

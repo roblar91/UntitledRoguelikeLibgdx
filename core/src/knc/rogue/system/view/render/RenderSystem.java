@@ -12,7 +12,25 @@ public abstract class RenderSystem extends IteratingSystem {
     protected SpriteBatch batch;
     protected FOVSystem fovSystem;
 
-    protected void drawTile(E e, float brightness) {
+    protected void drawTile(int entityId) {
+        E e = E.E(entityId);
+
+        float brightness = (float) fovSystem.fovMap[e.positionX()][e.positionY()];
+
+        if(brightness <= 0f && e.hasCharacter()) {
+            // Don't render characters out of sight
+            return;
+        }
+
+        if(brightness > 0f) {
+            e.seen();
+            brightness += Settings.BRIGHTNESS_BOOST;
+        }
+
+        if(e.hasSeen()) {
+            brightness = Math.max(Settings.BRIGHTNESS_MIN, brightness);
+        }
+
         batch.setColor(brightness, brightness, brightness, 1f);
         batch.draw(e.getTileSprite().texture,
                    e.getPosition().x * Settings.TILE_WIDTH * Settings.TILE_SCALE,

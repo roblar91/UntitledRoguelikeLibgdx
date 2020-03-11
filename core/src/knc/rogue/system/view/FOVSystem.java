@@ -6,6 +6,7 @@ import com.artemis.annotations.All;
 import com.artemis.systems.IteratingSystem;
 import knc.rogue.component.*;
 import squidpony.squidgrid.FOV;
+import squidpony.squidgrid.Radius;
 
 @All({Player.class, JustMoved.class, Sight.class})
 public class FOVSystem extends IteratingSystem {
@@ -27,6 +28,6 @@ public class FOVSystem extends IteratingSystem {
             resMap[solid.positionX()][solid.positionY()] = '#';
         }
 
-        fovMap = fov.calculateFOV(resMap, player.positionX(), player.positionY(), player.sightRange());
+        fovMap = fov.calculateFOV(resMap, player.positionX(), player.positionY(), player.sightRange(), Radius.SQUARE);
     }
 }

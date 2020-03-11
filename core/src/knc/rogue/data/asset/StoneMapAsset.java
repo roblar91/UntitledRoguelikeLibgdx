@@ -22,16 +22,7 @@ public class StoneMapAsset {
                     new Texture("sprites/dungeon/floor/pebble_brown_5_new.png"),
                     new Texture("sprites/dungeon/floor/pebble_brown_6_new.png"),
                     new Texture("sprites/dungeon/floor/pebble_brown_7_new.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_8_new.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_0_old.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_1_old.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_2_old.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_3_old.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_4_old.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_5_old.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_6_old.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_7_old.png"),
-                    new Texture("sprites/dungeon/floor/pebble_brown_8_old.png")};
+                    new Texture("sprites/dungeon/floor/pebble_brown_8_new.png")};
         }
 
         return floor[rng.nextInt(floor.length)];

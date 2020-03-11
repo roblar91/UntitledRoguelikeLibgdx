@@ -26,7 +26,6 @@ allprojects {
         appName = "Rogue"
         gdxVersion = '1.9.10'
         artemisVersion = '2.2.0'
-        artemisContribVersion = '2.4.0'
     }
 
     repositories {
@@ -74,7 +73,7 @@ project(":html") {
         compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion:sources"
 
         // Artemis-odb optional functionality (systems, events, components).
-        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
+        //compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
         //compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
         //compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
         //compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion:sources"
@@ -87,7 +86,6 @@ project(":components") {
 
     dependencies {
         api "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
-        api "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
 }
@@ -112,7 +110,6 @@ project(":core") {
         api "net.onedaybeard.artemis:artemis-odb:2.2.0"
         compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion"
         compileOnly "net.onedaybeard.artemis:artemis-fluid-core:$artemisVersion"
-        compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
         compile 'com.squidpony:squidlib-util:3.0.0-b10'
         compile 'com.squidpony:squidlib:3.0.0-b10'
         compile 'com.squidpony:squidlib-extra:3.0.0-b10'

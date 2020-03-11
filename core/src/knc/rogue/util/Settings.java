@@ -12,7 +12,7 @@ public final class Settings {
     public static String TITLE = "Rogue";
 
     public static boolean BUMP_ATTACK = true;
-    public static float BRIGHTNESS_BOOST = 0.5f;
-    public static float BRIGHTNESS_MIN = 0.3f;
+    public static float BRIGHTNESS_BOOST = 1f;
+    public static float BRIGHTNESS_MIN = 0.6f;
     public static Level LOG_LEVEL = Level.INFO;
 }

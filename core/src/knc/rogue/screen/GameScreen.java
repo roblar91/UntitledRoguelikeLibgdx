@@ -38,6 +38,8 @@ public class GameScreen implements Screen {
                       new MapObjectRenderSystem(),
                       new ItemRenderSystem(),
                       new CharacterRenderSystem(),
+                      new UIRenderSystem(),
+
                       new ComponentCleanupSystem()
                 );
 

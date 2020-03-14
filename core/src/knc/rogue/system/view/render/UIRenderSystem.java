@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import knc.rogue.system.view.camera.UICameraSystem;
 import squidpony.panel.IColoredString;
+import squidpony.squidgrid.gui.gdx.DefaultResources;
 import squidpony.squidgrid.gui.gdx.SquidMessageBox;
 
 public class UIRenderSystem extends BaseSystem {
@@ -16,6 +17,7 @@ public class UIRenderSystem extends BaseSystem {
     protected void initialize() {
         super.initialize();
 
+        messageBox.setFont(DefaultResources.getCrispLeanFont());
         messageBox.fillBackground(new Color(0.08f, 0.08f, 0.08f, 1f));
     }
 

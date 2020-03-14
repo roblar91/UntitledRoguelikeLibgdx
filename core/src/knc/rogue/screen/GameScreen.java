@@ -62,6 +62,7 @@ public class GameScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         world.getSystem(CameraSystem.class).resize();
+        world.getSystem(UIRenderSystem.class).resizeCamera();
     }
 
     @Override

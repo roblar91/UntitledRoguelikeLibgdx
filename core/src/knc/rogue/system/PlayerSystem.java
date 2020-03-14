@@ -2,6 +2,7 @@ package knc.rogue.system;
 
 import com.artemis.BaseSystem;
 import com.artemis.E;
+import com.badlogic.gdx.graphics.Color;
 import knc.rogue.data.asset.PlayerAssets;
 import knc.rogue.util.Formulae;
 
@@ -21,7 +22,8 @@ public class PlayerSystem extends BaseSystem {
             player.player()
                   .cameraFollow()
                   .character()
-                  .name("Player")
+                  .alive()
+                  .name("Player", Color.BLUE)
                   .tileSprite(PlayerAssets.getHumanFemale())
                   .meleeAttack()
                   .baseHealth(100)

@@ -1,6 +1,7 @@
 package knc.rogue.data;
 
 import com.artemis.E;
+import com.badlogic.gdx.graphics.Color;
 import knc.rogue.data.asset.MonsterAssets;
 import knc.rogue.system.KeyboardInputSystem;
 import knc.rogue.util.Formulae;
@@ -24,7 +25,7 @@ public final class MonsterFactory {
         switch(type) {
             case MONSTER_BAT:
                 e.tileSprite(MonsterAssets.getBat())
-                 .name("Bat")
+                 .name("Bat", Color.RED)
                  .meleeAttack()
                  .baseHealth(10)
                  .baseConstitution(1)

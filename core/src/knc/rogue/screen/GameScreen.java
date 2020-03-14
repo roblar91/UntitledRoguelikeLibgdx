@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.Color;
 import knc.rogue.system.*;
 import knc.rogue.system.map.MapGenerationSystem;
 import knc.rogue.system.view.*;
+import knc.rogue.system.view.camera.CameraSpriteFollowSystem;
+import knc.rogue.system.view.camera.CameraSystem;
+import knc.rogue.system.view.camera.UICameraSystem;
 import knc.rogue.system.view.render.*;
 
 import java.util.logging.Logger;
@@ -33,6 +36,7 @@ public class GameScreen implements Screen {
                       new FOVSystem(),
                       new CameraSystem(),
                       new CameraSpriteFollowSystem(),
+                      new UICameraSystem(),
                       new ClearScreenSystem(Color.BLACK),
                       new TerrainRenderSystem(),
                       new MapObjectRenderSystem(),
@@ -62,7 +66,7 @@ public class GameScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         world.getSystem(CameraSystem.class).resize();
-        world.getSystem(UIRenderSystem.class).resizeCamera();
+        world.getSystem(UICameraSystem.class).resize();
     }
 
     @Override

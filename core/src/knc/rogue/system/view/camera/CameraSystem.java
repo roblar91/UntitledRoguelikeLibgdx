@@ -1,4 +1,4 @@
-package knc.rogue.system.view;
+package knc.rogue.system.view.camera;
 
 import com.artemis.BaseSystem;
 import com.badlogic.gdx.Gdx;
@@ -7,7 +7,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 public class CameraSystem extends BaseSystem {
     private OrthographicCamera camera = new OrthographicCamera();
 
-    public CameraSystem() {
+    @Override
+    protected void initialize() {
+        super.initialize();
+
         resize();
     }
 

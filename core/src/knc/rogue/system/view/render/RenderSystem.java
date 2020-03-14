@@ -3,7 +3,7 @@ package knc.rogue.system.view.render;
 import com.artemis.E;
 import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import knc.rogue.system.view.CameraSystem;
+import knc.rogue.system.view.camera.CameraSystem;
 import knc.rogue.system.view.FOVSystem;
 import knc.rogue.util.Settings;
 

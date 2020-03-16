@@ -10,9 +10,7 @@ import knc.rogue.component.TileSprite;
 @All({Character.class, TileSprite.class, Position.class, Alive.class})
 public class CharacterRenderSystem extends RenderSystem {
     @Override
-    protected void process(int entityId) {
-        E e = E.E(entityId);
-
+    protected void process(E e) {
         float brightness = calculateBrightness(e, false);
         if(brightness > 0f) {
             drawEntity(e, brightness);

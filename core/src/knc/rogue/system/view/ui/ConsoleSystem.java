@@ -1,8 +1,8 @@
 package knc.rogue.system.view.ui;
 
 import com.artemis.E;
+import com.artemis.FluidIteratingSystem;
 import com.artemis.annotations.All;
-import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Color;
 import knc.rogue.component.ConsoleMessage;
 import knc.rogue.util.Settings;
@@ -11,7 +11,7 @@ import squidpony.squidgrid.gui.gdx.DefaultResources;
 import squidpony.squidgrid.gui.gdx.SquidMessageBox;
 
 @All(ConsoleMessage.class)
-public class ConsoleSystem extends IteratingSystem {
+public class ConsoleSystem extends FluidIteratingSystem {
     private SquidMessageBox console;
 
     @Override
@@ -28,8 +28,7 @@ public class ConsoleSystem extends IteratingSystem {
     }
 
     @Override
-    protected void process(int entityId) {
-        E e = E.E(entityId);
+    protected void process(E e) {
         print(e.consoleMessageMessage());
         e.deleteFromWorld();
     }

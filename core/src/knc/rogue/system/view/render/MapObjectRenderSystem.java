@@ -9,9 +9,7 @@ import knc.rogue.component.TileSprite;
 @All({MapObject.class, TileSprite.class, Position.class})
 public class MapObjectRenderSystem extends RenderSystem {
     @Override
-    protected void process(int entityId) {
-        E e = E.E(entityId);
-
+    protected void process(E e) {
         float brightness = calculateBrightness(e, true);
         drawEntity(e, brightness);
     }

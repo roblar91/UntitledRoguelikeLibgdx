@@ -1,7 +1,6 @@
 package knc.rogue.system;
 
 import com.artemis.Aspect;
-import com.artemis.BaseSystem;
 import com.artemis.E;
 import knc.rogue.command.MeleeAttackCommand;
 import knc.rogue.command.MoveCommand;
@@ -11,10 +10,11 @@ import knc.rogue.component.Position;
 import knc.rogue.component.Solid;
 import knc.rogue.util.CompassDirection;
 import knc.rogue.util.Settings;
+import net.mostlyoriginal.api.system.core.PassiveSystem;
 
 import java.util.logging.Logger;
 
-public class MovementSystem extends BaseSystem {
+public class MovementSystem extends PassiveSystem {
     private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
     private CommandSystem commandSystem;
 
@@ -46,10 +46,6 @@ public class MovementSystem extends BaseSystem {
         } else {
             LOGGER.info("[Entity " + actor.id() +"]Solid at destination: Can not move");
         }
-    }
-
-    @Override
-    protected void processSystem() {
     }
 
     private boolean checkTargetPositionForAspect(int targetX, int targetY, Aspect.Builder aspect) {

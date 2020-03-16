@@ -1,8 +1,8 @@
 package knc.rogue.system;
 
 import com.artemis.E;
+import com.artemis.FluidIteratingSystem;
 import com.artemis.annotations.All;
-import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Color;
 import knc.rogue.component.Alive;
 import knc.rogue.component.Health;
@@ -11,13 +11,11 @@ import squidpony.panel.IColoredString;
 import java.util.logging.Logger;
 
 @All({Alive.class, Health.class})
-public class DeathSystem extends IteratingSystem {
+public class DeathSystem extends FluidIteratingSystem {
     private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
 
     @Override
-    protected void process(int entityId) {
-        E e = E.E(entityId);
-
+    protected void process(E e) {
         if(e.healthCurrentHealth() <= 0) {
             e.removeAlive();
 

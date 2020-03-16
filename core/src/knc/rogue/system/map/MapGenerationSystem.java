@@ -1,10 +1,10 @@
 package knc.rogue.system.map;
 
-import com.artemis.BaseSystem;
 import com.artemis.E;
 import knc.rogue.component.MapEntity.MapType;
+import net.mostlyoriginal.api.system.core.PassiveSystem;
 
-public class MapGenerationSystem extends BaseSystem {
+public class MapGenerationSystem extends PassiveSystem {
     @Override
     protected void processSystem() {
     }

@@ -1,13 +1,13 @@
 package knc.rogue.system.view.render;
 
 import com.artemis.E;
-import com.artemis.systems.IteratingSystem;
+import com.artemis.FluidIteratingSystem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import knc.rogue.system.view.camera.CameraSystem;
 import knc.rogue.system.view.FOVSystem;
 import knc.rogue.util.Settings;
 
-public abstract class RenderSystem extends IteratingSystem {
+public abstract class RenderSystem extends FluidIteratingSystem {
     protected CameraSystem cameraSystem;
     protected SpriteBatch batch;
     protected FOVSystem fovSystem;
@@ -63,7 +63,4 @@ public abstract class RenderSystem extends IteratingSystem {
 
         batch.dispose();
     }
-
-    @Override
-    protected abstract void process(int entityId);
 }

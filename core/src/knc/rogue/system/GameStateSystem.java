@@ -6,10 +6,11 @@ import com.artemis.E;
 import knc.rogue.component.Entrance;
 import knc.rogue.component.MapEntity.MapType;
 import knc.rogue.system.map.MapGenerationSystem;
+import net.mostlyoriginal.api.system.core.PassiveSystem;
 
 import java.util.logging.Logger;
 
-public class GameStateSystem extends BaseSystem {
+public class GameStateSystem extends PassiveSystem {
     private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
     private MapGenerationSystem mapGenerationSystem;
     private PlayerSystem playerSystem;
@@ -22,10 +23,6 @@ public class GameStateSystem extends BaseSystem {
 
         currentMap = mapGenerationSystem.generateMap(MapType.FOREST_1);
         positionPlayerAtEntrance();
-    }
-
-    @Override
-    protected void processSystem() {
     }
 
     private void positionPlayerAtEntrance() {

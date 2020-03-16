@@ -1,14 +1,14 @@
 package knc.rogue.system;
 
 import com.artemis.E;
+import com.artemis.FluidIteratingSystem;
 import com.artemis.annotations.One;
-import com.artemis.systems.IteratingSystem;
 import knc.rogue.component.JustMoved;
 
 @One(JustMoved.class)
-public class ComponentCleanupSystem extends IteratingSystem {
+public class ComponentCleanupSystem extends FluidIteratingSystem {
     @Override
-    protected void process(int entityId) {
-        E.E(entityId).justMoved(false);
+    protected void process(E e) {
+        e.justMoved(false);
     }
 }

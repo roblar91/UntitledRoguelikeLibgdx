@@ -1,10 +1,10 @@
 package knc.rogue.system.view.camera;
 
-import com.artemis.BaseSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import net.mostlyoriginal.api.system.core.PassiveSystem;
 
-public class CameraSystem extends BaseSystem {
+public class CameraSystem extends PassiveSystem {
     private OrthographicCamera camera = new OrthographicCamera();
 
     @Override
@@ -21,9 +21,5 @@ public class CameraSystem extends BaseSystem {
     public void resize() {
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.update();
-    }
-
-    @Override
-    protected void processSystem() {
     }
 }

@@ -36,7 +36,6 @@ public class GameScreen implements Screen {
                       new FOVSystem(),
                       new SeenSystem(),
 
-                      // Rendering
                       new CameraSystem(),
                       new CameraSpriteFollowSystem(),
                       new ClearScreenSystem(Color.BLACK),
@@ -49,6 +48,7 @@ public class GameScreen implements Screen {
                       new ComponentCleanupSystem()
                 );
 
+        LOGGER.info("World created");
         return new World(builder.build());
     }
 
@@ -68,6 +68,7 @@ public class GameScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         world.getSystem(CameraSystem.class).resize();
+        world.getSystem(UIRenderSystem.class).resize();
     }
 
     @Override

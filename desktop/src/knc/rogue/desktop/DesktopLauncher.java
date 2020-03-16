@@ -12,7 +12,6 @@ public class DesktopLauncher {
 		config.title = Settings.TITLE;
 		config.width = Settings.WINDOW_WIDTH;
 		config.height = Settings.WINDOW_HEIGHT;
-		config.fullscreen = Settings.FULLSCREEN;
 
 		new LwjglApplication(new Rogue(), config);
 	}

@@ -6,7 +6,6 @@ import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Color;
 import knc.rogue.component.Alive;
 import knc.rogue.component.Health;
-import knc.rogue.system.view.render.UIRenderSystem;
 import squidpony.panel.IColoredString;
 
 import java.util.logging.Logger;
@@ -22,10 +21,10 @@ public class DeathSystem extends IteratingSystem {
         if(e.healthCurrentHealth() <= 0) {
             e.removeAlive();
 
-            IColoredString<Color> string = new IColoredString.Impl<>();
-            string.append(e.nameName(), e.nameColor());
-            string.append(" has died!");
-            UIRenderSystem.printToConsole(string);
+            IColoredString<Color> message = new IColoredString.Impl<>();
+            message.append(e.nameName(), e.nameColor());
+            message.append(" has died!");
+            E.E().consoleMessage(message);
 
             LOGGER.info(e.toString() + " " + e.nameName() +  " has died");
         }

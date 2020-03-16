@@ -85,8 +85,13 @@ project(":components") {
     apply plugin: "java-library"
 
     dependencies {
-        api "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
+        api "net.onedaybeard.artemis:artemis-odb:2.2.0"
+        compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion"
+        compileOnly "net.onedaybeard.artemis:artemis-fluid-core:$artemisVersion"
+        compile 'com.squidpony:squidlib-util:3.0.0-b10'
+        compile 'com.squidpony:squidlib:3.0.0-b10'
+        compile 'com.squidpony:squidlib-extra:3.0.0-b10'
     }
 }
 

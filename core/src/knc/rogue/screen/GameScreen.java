@@ -10,8 +10,9 @@ import knc.rogue.system.map.MapGenerationSystem;
 import knc.rogue.system.view.*;
 import knc.rogue.system.view.camera.CameraSpriteFollowSystem;
 import knc.rogue.system.view.camera.CameraSystem;
-import knc.rogue.system.view.camera.UICameraSystem;
 import knc.rogue.system.view.render.*;
+import knc.rogue.system.view.ui.ConsoleSystem;
+import knc.rogue.system.view.ui.UIRenderSystem;
 
 import java.util.logging.Logger;
 
@@ -24,6 +25,7 @@ public class GameScreen implements Screen {
 
         WorldConfigurationBuilder builder = new WorldConfigurationBuilder()
                 .with(new SuperMapper(),
+                      new ConsoleSystem(),
                       new KeyboardInputSystem(),
                       new MovementSystem(),
                       new PlayerSystem(),
@@ -31,12 +33,12 @@ public class GameScreen implements Screen {
                       new GameStateSystem(),
                       new CommandSystem(),
                       new DeathSystem(),
+                      new FOVSystem(),
+                      new SeenSystem(),
 
                       // Rendering
-                      new FOVSystem(),
                       new CameraSystem(),
                       new CameraSpriteFollowSystem(),
-                      new UICameraSystem(),
                       new ClearScreenSystem(Color.BLACK),
                       new TerrainRenderSystem(),
                       new MapObjectRenderSystem(),
@@ -66,7 +68,6 @@ public class GameScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         world.getSystem(CameraSystem.class).resize();
-        world.getSystem(UICameraSystem.class).resize();
     }
 
     @Override

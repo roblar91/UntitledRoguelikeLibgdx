@@ -8,6 +8,9 @@ public final class Settings {
 
     public static int WINDOW_WIDTH = 1600;
     public static int WINDOW_HEIGHT = 900;
+    public static boolean FULLSCREEN = true;
+    public static int CONSOLE_WIDTH = 40;
+    public static int CONSOLE_HEIGHT = 10;
     public static float TILE_SCALE = 1f;
     public static String TITLE = "Rogue";
 

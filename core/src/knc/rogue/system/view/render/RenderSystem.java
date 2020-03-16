@@ -25,12 +25,11 @@ public abstract class RenderSystem extends IteratingSystem {
         float brightness = (float) fovSystem.fovMap[e.positionX()][e.positionY()];
 
         if(brightness > 0f) {
-            e.seen();
             brightness += Settings.BRIGHTNESS_BOOST;
-        }
 
-        if(useMinimumBrightnessSetting && e.hasSeen()) {
-            brightness = Math.max(Settings.BRIGHTNESS_MIN, brightness);
+            if(useMinimumBrightnessSetting) {
+                brightness = Math.max(Settings.BRIGHTNESS_MIN, brightness);
+            }
         }
 
         return brightness;

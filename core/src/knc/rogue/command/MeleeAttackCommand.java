@@ -2,7 +2,6 @@ package knc.rogue.command;
 
 import com.artemis.E;
 import com.badlogic.gdx.graphics.Color;
-import knc.rogue.system.view.render.UIRenderSystem;
 import knc.rogue.util.Formulae;
 import squidpony.panel.IColoredString;
 
@@ -21,13 +20,13 @@ public class MeleeAttackCommand implements Command {
         target.healthCurrentHealth(target.healthCurrentHealth() - damage);
 
 
-        IColoredString<Color> string = new IColoredString.Impl<>();
-        string.append(actor.nameName(), actor.nameColor());
-        string.append(" attacks ");
-        string.append(target.nameName(), target.nameColor());
-        string.append(" for ");
-        string.append(String.valueOf(damage), Color.RED);
-        string.append(" damage");
-        UIRenderSystem.printToConsole(string);
+        IColoredString<Color> message = new IColoredString.Impl<>();
+        message.append(actor.nameName(), actor.nameColor());
+        message.append(" attacks ");
+        message.append(target.nameName(), target.nameColor());
+        message.append(" for ");
+        message.append(String.valueOf(damage), Color.RED);
+        message.append(" damage");
+        E.E().consoleMessage(message);
     }
 }

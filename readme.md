@@ -27,6 +27,7 @@ A roguelike built using [libGDX](https://github.com/libgdx/libgdx), [Artemis-odb
 - Unload entities when area changes
 - Make sure unused components, entities and GDX assets are destroyed
 - Energy system. A character gets to act when energy is full
+- Look into AssetManager
 
 ###### Player
 - Experience & levels
@@ -50,11 +51,12 @@ A roguelike built using [libGDX](https://github.com/libgdx/libgdx), [Artemis-odb
 ###### User Interface
 - Player stats
 - Talent screen
+- Action bars
 - Hotkeys
 - Target stats
 - Start screen
-- Message console
-- Health bars
+- ~~Message console~~ OK
+- Health/stamina/mana bars
 - Buff/debuff icons
 - World status screen
 - Mouse tooltips

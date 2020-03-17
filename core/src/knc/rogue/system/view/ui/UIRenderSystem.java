@@ -38,7 +38,7 @@ public class UIRenderSystem extends BaseSystem {
 
     @Override
     protected void processSystem() {
-        healthBar.setText(playerSystem.player.healthCurrentHealth() + "/" + playerSystem.player.healthMaxHealth());
+        healthBar.setText(playerSystem.getPlayer().healthCurrentHealth() + "/" + playerSystem.getPlayer().healthMaxHealth());
         stage.draw();
     }
 

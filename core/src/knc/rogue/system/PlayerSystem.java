@@ -10,7 +10,8 @@ import java.util.logging.Logger;
 
 public class PlayerSystem extends PassiveSystem {
     private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
-    public E player;
+    private E player;
+    private boolean playerTurn = false;
 
     @Override
     protected void initialize() {
@@ -23,6 +24,7 @@ public class PlayerSystem extends PassiveSystem {
                   .cameraFollow()
                   .character()
                   .alive()
+                  .energy()
                   .name("Player", Color.BLUE)
                   .tileSprite(PlayerAssets.getHumanFemale())
                   .meleeAttack()
@@ -34,5 +36,17 @@ public class PlayerSystem extends PassiveSystem {
                   .sight(8)
                   .justMoved();
         }
+    }
+
+    public E getPlayer() {
+        return player;
+    }
+
+    public boolean isPlayerTurn() {
+        return playerTurn;
+    }
+
+    public void setPlayerTurn(boolean playerTurn) {
+        this.playerTurn = playerTurn;
     }
 }

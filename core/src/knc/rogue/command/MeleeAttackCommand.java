@@ -18,7 +18,7 @@ public class MeleeAttackCommand implements Command {
     public void execute() {
         int damage = Formulae.calculateMeleeDamage(actor);
         target.healthCurrentHealth(target.healthCurrentHealth() - damage);
-
+        actor.energyAdd(-100);
 
         IColoredString<Color> message = new IColoredString.Impl<>();
         message.append(actor.nameName(), actor.nameColor());

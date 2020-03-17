@@ -30,7 +30,7 @@ public class GameStateSystem extends PassiveSystem {
 
         E.withAspect(Aspect.all(Entrance.class)).forEach(e -> {
             if(e.getPosition().areaId == currentMap.id()) {
-                playerSystem.player.position(e.positionX(), e.positionY());
+                playerSystem.getPlayer().position(e.positionX(), e.positionY());
             }
         });
     }

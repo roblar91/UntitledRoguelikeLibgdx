@@ -16,5 +16,6 @@ public class MoveCommand implements Command {
     public void execute() {
         actor.position(actor.positionX() + direction.dX, actor.positionY() + direction.dY);
         actor.justMoved();
+        actor.energyAdd(-100);
     }
 }

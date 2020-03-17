@@ -20,6 +20,7 @@ public final class MonsterFactory {
                .position(posX, posY, areaId)
                .character()
                .alive()
+               .energy()
                .hostile();
 
         switch(type) {

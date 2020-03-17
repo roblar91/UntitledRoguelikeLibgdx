@@ -35,6 +35,9 @@ public class GameScreen implements Screen {
                       new DeathSystem(),
                       new FOVSystem(),
                       new SeenSystem(),
+                      new AISystem(),
+                      new EnergySystem(),
+                      new TurnManagerSystem(),
 
                       new CameraSystem(),
                       new CameraSpriteFollowSystem(),

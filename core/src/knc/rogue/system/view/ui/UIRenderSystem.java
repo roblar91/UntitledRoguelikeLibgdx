@@ -2,22 +2,24 @@ package knc.rogue.system.view.ui;
 
 import com.artemis.BaseSystem;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.utils.Align;
+import knc.rogue.system.PlayerSystem;
+import squidpony.squidgrid.gui.gdx.SColor;
 
 public class UIRenderSystem extends BaseSystem {
     private ConsoleSystem consoleSystem;
+    private PlayerSystem playerSystem;
 
     private Stage stage = new Stage();
     private VerticalGroup upperLeft = new VerticalGroup();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
-    private Bar healthBar = new Bar(shapeRenderer, 200, 20, 3, Color.DARK_GRAY, Color.RED);
-    private Bar staminaBar = new Bar(shapeRenderer, 200, 20, 3, Color.DARK_GRAY, Color.YELLOW);
-    private Bar manaBar = new Bar(shapeRenderer, 200, 20, 3, Color.DARK_GRAY, Color.BLUE);
+    private Bar healthBar = new Bar(shapeRenderer, 200, 25, 3, SColor.CW_GRAY_BLACK, SColor.CW_RICH_RED);
+    private Bar staminaBar = new Bar(shapeRenderer, 200, 25, 3, SColor.CW_GRAY_BLACK, SColor.SELECTIVE_YELLOW);
+    private Bar manaBar = new Bar(shapeRenderer, 200, 25, 3, SColor.CW_GRAY_BLACK, SColor.AURORA_ROYAL_BLUE);
 
     @Override
     protected void initialize() {
@@ -36,6 +38,7 @@ public class UIRenderSystem extends BaseSystem {
 
     @Override
     protected void processSystem() {
+        healthBar.setText(playerSystem.player.healthCurrentHealth() + "/" + playerSystem.player.healthMaxHealth());
         stage.draw();
     }
 
@@ -43,6 +46,12 @@ public class UIRenderSystem extends BaseSystem {
         ((OrthographicCamera) stage.getCamera()).setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         upperLeft.setPosition(0, Gdx.graphics.getHeight());
+        upperLeft.validate();
+
+        healthBar.reposition();
+        staminaBar.reposition();
+        manaBar.reposition();
+
         consoleSystem.getConsole().setPosition(0, 0);
     }
 }

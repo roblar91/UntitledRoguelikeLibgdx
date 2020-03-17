@@ -27,9 +27,10 @@ public abstract class RenderSystem extends FluidIteratingSystem {
         if(brightness > 0f) {
             brightness += Settings.BRIGHTNESS_BOOST;
 
-            if(useMinimumBrightnessSetting) {
-                brightness = Math.max(Settings.BRIGHTNESS_MIN, brightness);
-            }
+        }
+
+        if(useMinimumBrightnessSetting && e.hasSeen()) {
+            brightness = Math.max(Settings.BRIGHTNESS_MIN, brightness);
         }
 
         return brightness;

@@ -2,11 +2,10 @@ package knc.rogue.component;
 
 import com.artemis.Component;
 
-public class Health extends Component {
+public class Strength extends Component {
+    private int allocated = 0;
     private int base;
     public int bonus;
-    public int maxHealth;
-    public int currentHealth;
 
     public int getTotal() {
         return base + bonus;
@@ -16,9 +15,12 @@ public class Health extends Component {
         return base;
     }
 
+    public void allocate() {
+        allocated++;
+        base++;
+    }
+
     public void set(int base) {
         this.base = base;
-        this.maxHealth = base;
-        this.currentHealth = base;
     }
 }

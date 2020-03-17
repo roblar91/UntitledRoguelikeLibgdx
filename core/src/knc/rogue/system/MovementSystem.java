@@ -28,23 +28,23 @@ public class MovementSystem extends PassiveSystem {
         int targetY = actor.positionY() + direction.dY;
 
         if(checkTargetPositionForAspect(targetX, targetY, hostileAspect)) {
-            LOGGER.fine("[Entity " + actor.id() +"]Hostile at destination");
+            LOGGER.fine("[Entity " + actor.id() +"] Hostile at destination");
 
             if(Settings.BUMP_ATTACK) {
-                LOGGER.fine("[Entity " + actor.id() +"]BUMP_ATTACK=true: Issuing attack command");
+                LOGGER.fine("[Entity " + actor.id() +"] BUMP_ATTACK=true: Issuing attack command");
                 commandSystem.queueCommand(new MeleeAttackCommand(actor, getEntityWithAspectAtPosition(targetX, targetY, hostileAspect)));
             } else {
-                LOGGER.info("[Entity " + actor.id() +"]BUMP_ATTACK=false: Destination occupied");
+                LOGGER.info("[Entity " + actor.id() +"] BUMP_ATTACK=false: Destination occupied");
             }
 
             return;
         }
 
         if(!checkTargetPositionForAspect(targetX, targetY, solidAspect)) {
-            LOGGER.fine("[Entity " + actor.id() +"]Issuing move command");
+            LOGGER.fine("[Entity " + actor.id() +"] Issuing move command");
             commandSystem.queueCommand(new MoveCommand(actor, direction));
         } else {
-            LOGGER.info("[Entity " + actor.id() +"]Solid at destination: Can not move");
+            LOGGER.info("[Entity " + actor.id() +"] Solid at destination: Can not move");
         }
     }
 

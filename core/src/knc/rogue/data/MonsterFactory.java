@@ -27,10 +27,11 @@ public final class MonsterFactory {
                 e.tileSprite(MonsterAssets.getBat())
                  .name("Bat", Color.RED)
                  .meleeAttack()
-                 .baseHealth(10)
-                 .baseConstitution(1)
-                 .baseStrength(1)
-                 .health(Formulae.calculateMaxHealth(e));
+                 .strength(1)
+                 .constitution(1)
+                 .health(10)
+                 .healthMaxHealth(Formulae.calculateMaxHealth(e))
+                 .healthCurrentHealth(Formulae.calculateMaxHealth(e));
                 break;
         }
 

@@ -26,10 +26,11 @@ public class PlayerSystem extends PassiveSystem {
                   .name("Player", Color.BLUE)
                   .tileSprite(PlayerAssets.getHumanFemale())
                   .meleeAttack()
-                  .baseHealth(100)
-                  .baseConstitution(10)
-                  .baseStrength(10)
-                  .health(Formulae.calculateMaxHealth(player))
+                  .constitution(10)
+                  .strength(10)
+                  .health(100)
+                  .healthMaxHealth(Formulae.calculateMaxHealth(player))
+                  .healthCurrentHealth(Formulae.calculateMaxHealth(player))
                   .sight(8)
                   .justMoved();
         }

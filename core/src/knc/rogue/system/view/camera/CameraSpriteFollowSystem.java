@@ -5,10 +5,9 @@ import com.artemis.FluidIteratingSystem;
 import com.artemis.annotations.All;
 import knc.rogue.component.CameraFollow;
 import knc.rogue.component.Position;
-import knc.rogue.component.TileSprite;
 import knc.rogue.util.Settings;
 
-@All({CameraFollow.class, Position.class, TileSprite.class})
+@All({CameraFollow.class, Position.class})
 public class CameraSpriteFollowSystem extends FluidIteratingSystem {
     private CameraSystem cameraSystem;
 

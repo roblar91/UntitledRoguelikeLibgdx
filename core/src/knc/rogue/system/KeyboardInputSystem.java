@@ -40,6 +40,8 @@ public class KeyboardInputSystem extends BaseSystem {
                 LOGGER.fine("KEYPRESS: NUMPAD_9");
                 movementSystem.attemptMove(playerSystem.getPlayer(), CompassDirection.NORTHEAST);
             }
+
+            playerSystem.setPlayerTurn(false);
         }
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {

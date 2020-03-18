@@ -1,4 +1,4 @@
-package knc.rogue.system.view;
+package knc.rogue.system;
 
 import com.artemis.Aspect;
 import com.artemis.E;
@@ -8,12 +8,9 @@ import knc.rogue.component.*;
 import squidpony.squidgrid.FOV;
 import squidpony.squidgrid.Radius;
 
-@All({Player.class, JustMoved.class, Sight.class})
+@All({Alive.class, JustMoved.class, Sight.class, Position.class})
 public class FOVSystem extends FluidIteratingSystem {
     private Aspect.Builder solids = Aspect.all(Solid.class, Position.class);
-    private FOV fov = new FOV(FOV.SHADOW);;
-
-    public double[][] fovMap;
 
     @Override
     protected void process(E e) {
@@ -24,6 +21,18 @@ public class FOVSystem extends FluidIteratingSystem {
             resMap[solid.positionX()][solid.positionY()] = '#';
         }
 
-        fovMap = fov.calculateFOV(resMap, e.positionX(), e.positionY(), e.sightRange(), Radius.SQUARE);
+        e.sightFovMap(new FOV(FOV.SHADOW).calculateFOV(resMap,
+                                                       e.positionX(),
+                                                       e.positionY(),
+                                                       e.sightRange(),
+                                                       Radius.SQUARE));
+    }
+
+    public boolean isVisible(E actor, E target) {
+        return getVisibility(actor, target) > 0;
+    }
+
+    public double getVisibility(E actor, E target) {
+        return actor.sightFovMap()[target.positionX()][target.positionY()];
     }
 }

@@ -3,14 +3,16 @@ package knc.rogue.system.view.render;
 import com.artemis.E;
 import com.artemis.FluidIteratingSystem;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import knc.rogue.system.PlayerSystem;
 import knc.rogue.system.view.camera.CameraSystem;
-import knc.rogue.system.view.FOVSystem;
+import knc.rogue.system.FOVSystem;
 import knc.rogue.util.Settings;
 
 public abstract class RenderSystem extends FluidIteratingSystem {
     protected CameraSystem cameraSystem;
     protected SpriteBatch batch;
     protected FOVSystem fovSystem;
+    protected PlayerSystem playerSystem;
 
     protected void drawEntity(E e, float brightness) {
         batch.setColor(brightness, brightness, brightness, 1f);
@@ -22,11 +24,10 @@ public abstract class RenderSystem extends FluidIteratingSystem {
     }
 
     protected float calculateBrightness(E e, boolean useMinimumBrightnessSetting) {
-        float brightness = (float) fovSystem.fovMap[e.positionX()][e.positionY()];
+        float brightness = (float) fovSystem.getVisibility(playerSystem.getPlayer(), e);
 
         if(brightness > 0f) {
             brightness += Settings.BRIGHTNESS_BOOST;
-
         }
 
         if(useMinimumBrightnessSetting && e.hasSeen()) {

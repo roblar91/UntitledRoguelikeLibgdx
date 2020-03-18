@@ -21,13 +21,15 @@ public final class MonsterFactory {
                .character()
                .alive()
                .energy()
-               .hostile();
+               .hostile()
+               .justMoved();
 
         switch(type) {
             case MONSTER_BAT:
                 e.tileSprite(MonsterAssets.getBat())
                  .name("Bat", Color.RED)
                  .meleeAttack()
+                 .sight(6)
                  .strength(1)
                  .constitution(1)
                  .health(10)

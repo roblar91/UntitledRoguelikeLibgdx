@@ -15,7 +15,7 @@ public class TurnManagerSystem extends BaseSystem {
 
     @Override
     protected void processSystem() {
-        while(true) {
+        while(!playerSystem.isPlayerTurn()) {
             E e = energySystem.getFullEnergyEntity();
             if(e == null) {
                 energySystem.giveEnergyToAll();
@@ -25,8 +25,6 @@ public class TurnManagerSystem extends BaseSystem {
                 } else {
                     aiSystem.act(e);
                 }
-
-                break;
             }
         }
     }

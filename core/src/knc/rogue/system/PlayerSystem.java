@@ -2,6 +2,7 @@ package knc.rogue.system;
 
 import com.artemis.E;
 import com.badlogic.gdx.graphics.Color;
+import knc.rogue.component.Character;
 import knc.rogue.data.asset.PlayerAssets;
 import knc.rogue.util.Formulae;
 import net.mostlyoriginal.api.system.core.PassiveSystem;
@@ -11,7 +12,7 @@ import java.util.logging.Logger;
 public class PlayerSystem extends PassiveSystem {
     private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
     private E player;
-    private boolean playerTurn = false;
+    private boolean playerTurn = true;
 
     @Override
     protected void initialize() {
@@ -22,7 +23,7 @@ public class PlayerSystem extends PassiveSystem {
             player = E.E();
             player.player()
                   .cameraFollow()
-                  .character()
+                  .characterBehaviour(Character.Behaviour.PLAYER)
                   .alive()
                   .energy()
                   .name("Player", Color.BLUE)

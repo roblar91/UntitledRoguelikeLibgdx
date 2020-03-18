@@ -1,11 +1,10 @@
 package knc.rogue.data.asset;
 
 import com.badlogic.gdx.graphics.Texture;
-
-import java.util.Random;
+import squidpony.squidmath.RNG;
 
 public class StoneMapAsset {
-    private static Random rng = new Random();
+    private static RNG rng = new RNG();
     private static Texture[] floor;
     private static Texture[] wall;
     private static Texture entrance;
@@ -25,7 +24,7 @@ public class StoneMapAsset {
                     new Texture("sprites/dungeon/floor/pebble_brown_8_new.png")};
         }
 
-        return floor[rng.nextInt(floor.length)];
+        return rng.getRandomElement(floor);
     }
 
     public static Texture getWall() {
@@ -37,7 +36,7 @@ public class StoneMapAsset {
                     new Texture("sprites/dungeon/wall/brick_gray_3.png")};
         }
 
-        return wall[rng.nextInt(wall.length)];
+        return rng.getRandomElement(wall);
     }
 
     public static Texture getEntrance() {

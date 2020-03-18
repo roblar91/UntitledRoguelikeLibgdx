@@ -6,13 +6,13 @@ import knc.rogue.data.MonsterFactory;
 import knc.rogue.data.ObjectFactory;
 import knc.rogue.data.SpawnType;
 import knc.rogue.data.TerrainFactory;
+import squidpony.squidmath.RNG;
 
 import java.util.List;
 import java.util.Queue;
-import java.util.Random;
 
 public abstract class MapGenerator {
-    protected Random rng = new Random();
+    protected RNG rng = new RNG();
     protected MapGenerator() {}
 
     public E generateMap(MapType mapType) {

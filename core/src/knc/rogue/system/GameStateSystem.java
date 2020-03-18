@@ -1,7 +1,6 @@
 package knc.rogue.system;
 
 import com.artemis.Aspect;
-import com.artemis.BaseSystem;
 import com.artemis.E;
 import knc.rogue.component.Entrance;
 import knc.rogue.component.MapEntity.MapType;
@@ -25,12 +24,16 @@ public class GameStateSystem extends PassiveSystem {
         positionPlayerAtEntrance();
     }
 
+    public E getCurrentMap() {
+        return currentMap;
+    }
+
     private void positionPlayerAtEntrance() {
         LOGGER.info("Positioning player at entrance");
 
         E.withAspect(Aspect.all(Entrance.class)).forEach(e -> {
             if(e.getPosition().areaId == currentMap.id()) {
-                playerSystem.getPlayer().position(e.positionX(), e.positionY());
+                playerSystem.getPlayer().position(e.positionX(), e.positionY(), currentMap.id());
             }
         });
     }

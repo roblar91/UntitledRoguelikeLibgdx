@@ -25,19 +25,19 @@ public class GameScreen implements Screen {
 
         WorldConfigurationBuilder builder = new WorldConfigurationBuilder()
                 .with(new SuperMapper(),
+                      new CommandSystem(),
                       new ConsoleSystem(),
                       new KeyboardInputSystem(),
                       new MovementSystem(),
                       new PlayerSystem(),
                       new MapGenerationSystem(),
                       new GameStateSystem(),
-                      new CommandSystem(),
-                      new DeathSystem(),
                       new FOVSystem(),
                       new SeenSystem(),
                       new AISystem(),
                       new EnergySystem(),
                       new TurnManagerSystem(),
+                      new DeathSystem(),
 
                       new CameraSystem(),
                       new CameraSpriteFollowSystem(),

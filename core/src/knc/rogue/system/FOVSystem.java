@@ -8,17 +8,20 @@ import knc.rogue.component.*;
 import squidpony.squidgrid.FOV;
 import squidpony.squidgrid.Radius;
 
+import java.util.logging.Logger;
+
 @All({Alive.class, JustMoved.class, Sight.class, Position.class})
 public class FOVSystem extends FluidIteratingSystem {
+    private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
+    private GameStateSystem gameStateSystem;
+
     private Aspect.Builder solids = Aspect.all(Solid.class, Position.class);
+    private double[][] resMap;
 
     @Override
     protected void process(E e) {
-        E mapEntity = E.withComponent(MapEntity.class).get(0);
-        double[][] resMap = new double[mapEntity.mapEntityColumns()][mapEntity.mapEntityRows()];
-
-        for(E solid : E.withAspect(solids)) {
-            resMap[solid.positionX()][solid.positionY()] = '#';
+        if(gameStateSystem.getCurrentMap().mapEntityHasChanged()) {
+            calculateResMap();
         }
 
         e.sightFovMap(new FOV(FOV.SHADOW).calculateFOV(resMap,
@@ -34,5 +37,16 @@ public class FOVSystem extends FluidIteratingSystem {
 
     public double getVisibility(E actor, E target) {
         return actor.sightFovMap()[target.positionX()][target.positionY()];
+    }
+
+    private void calculateResMap() {
+        LOGGER.info("Calculating new resMap for area " + gameStateSystem.getCurrentMap().id());
+
+        gameStateSystem.getCurrentMap().mapEntityHasChanged(false);
+
+        resMap = new double[gameStateSystem.getCurrentMap().mapEntityColumns()][gameStateSystem.getCurrentMap().mapEntityRows()];
+        for(E solid : E.withAspect(solids)) {
+            resMap[solid.positionX()][solid.positionY()] = '#';
+        }
     }
 }

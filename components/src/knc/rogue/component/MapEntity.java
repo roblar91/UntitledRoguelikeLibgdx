@@ -6,6 +6,7 @@ public class MapEntity extends Component {
     public MapType mapType;
     public int columns;
     public int rows;
+    public boolean hasChanged = true;
 
     public void set(MapType mapType, int columns, int rows) {
         this.mapType = mapType;

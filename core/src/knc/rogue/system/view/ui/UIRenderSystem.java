@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import knc.rogue.data.asset.UIAssets;
 import knc.rogue.system.PlayerSystem;
+import knc.rogue.util.Settings;
 import squidpony.squidgrid.gui.gdx.SColor;
 
 public class UIRenderSystem extends BaseSystem {
@@ -36,6 +37,7 @@ public class UIRenderSystem extends BaseSystem {
     protected void initialize() {
         super.initialize();
 
+        upperLeft.top();
         upperLeft.left();
         upperLeft.columnLeft();
 
@@ -63,13 +65,15 @@ public class UIRenderSystem extends BaseSystem {
     @Override
     protected void processSystem() {
         healthBar.setText(playerSystem.getPlayer().healthCurrentHealth() + "/" + playerSystem.getPlayer().healthMaxHealth());
+        staminaBar.setText("Stamina");
+        manaBar.setText("Mana");
         stage.draw();
     }
 
     public void resize() {
-        ((OrthographicCamera) stage.getCamera()).setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        ((OrthographicCamera) stage.getCamera()).setToOrtho(false, Gdx.graphics.getWidth() / Settings.UI_SCALE, Gdx.graphics.getHeight() / Settings.UI_SCALE);
 
-        upperLeft.setPosition(0, Gdx.graphics.getHeight());
+        upperLeft.setPosition(0, Gdx.graphics.getHeight() / Settings.UI_SCALE);
         upperLeft.validate();
 
         healthIcon.reposition();

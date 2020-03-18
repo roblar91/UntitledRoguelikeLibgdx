@@ -43,7 +43,6 @@ public class Bar extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.end();
-
         shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
@@ -70,7 +69,7 @@ public class Bar extends Actor {
                                  text,
                                  Color.WHITE,
                                  stageCoordinates.x + getWidth() / 2,
-                                 -(Gdx.graphics.getHeight() - stageCoordinates.y - getHeight() / 2 - textCellFactory.height() / 2));
+                                 textCellFactory.height() / 2 + getHeight() / 2);
         }
     }
 

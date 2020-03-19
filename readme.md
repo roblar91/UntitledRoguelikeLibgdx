@@ -56,7 +56,7 @@ A roguelike built using [libGDX](https://github.com/libgdx/libgdx), [Artemis-odb
 - Target stats
 - Start screen
 - ~~Message console~~ OK
-- Health/stamina/mana bars
+- ~~Health/stamina/mana bars~~ OK
 - Buff/debuff icons
 - World status screen
 - Mouse tooltips

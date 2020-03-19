@@ -51,7 +51,6 @@ public class GameScreen implements Screen {
                       new ComponentCleanupSystem()
                 );
 
-        LOGGER.info("World created");
         return new World(builder.build());
     }
 
@@ -59,6 +58,7 @@ public class GameScreen implements Screen {
     public void show() {
         if(world == null) {
             world = createWorld();
+            LOGGER.info("World created");
         }
     }
 

@@ -2,15 +2,17 @@ package knc.rogue.system.view.ui;
 
 import com.artemis.BaseSystem;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
-import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.utils.Align;
 import knc.rogue.data.asset.UIAssets;
 import knc.rogue.system.PlayerSystem;
 import knc.rogue.util.Settings;
+import squidpony.squidgrid.gui.gdx.DefaultResources;
 import squidpony.squidgrid.gui.gdx.SColor;
 
 public class UIRenderSystem extends BaseSystem {
@@ -22,9 +24,9 @@ public class UIRenderSystem extends BaseSystem {
     private final Color STAMINA_COLOR = SColor.SELECTIVE_YELLOW;
     private final Color MANA_COLOR = SColor.AURORA_ROYAL_BLUE;
 
+    private Table rootTable = new Table();
 
     private Stage stage = new Stage();
-    private VerticalGroup upperLeft = new VerticalGroup();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Icon healthIcon = new Icon(UIAssets.getHealthIcon(), shapeRenderer, BACKGROUND_COLOR);
     private Icon staminaIcon = new Icon(UIAssets.getStaminaIcon(), shapeRenderer, BACKGROUND_COLOR);
@@ -32,57 +34,65 @@ public class UIRenderSystem extends BaseSystem {
     private Bar healthBar = new Bar(shapeRenderer, 200, 25, 3, BACKGROUND_COLOR, HEALTH_COLOR);
     private Bar staminaBar = new Bar(shapeRenderer, 200, 25, 3, BACKGROUND_COLOR, STAMINA_COLOR);
     private Bar manaBar = new Bar(shapeRenderer, 200, 25, 3, BACKGROUND_COLOR, MANA_COLOR);
+    private Label healthLabel;
+    private Label staminaLabel;
+    private Label manaLabel;
 
     @Override
     protected void initialize() {
         super.initialize();
 
-        upperLeft.top();
-        upperLeft.left();
-        upperLeft.columnLeft();
+        Label.LabelStyle style = new Label.LabelStyle(DefaultResources.getCrispLeanFont().resetSize(8, 16).font(), Color.WHITE);
 
-        HorizontalGroup health = new HorizontalGroup();
-        health.addActor(healthIcon);
-        health.addActor(healthBar);
-        upperLeft.addActor(health);
+        healthLabel = new Label("", style);
+        healthLabel.setAlignment(Align.bottom);
 
-        HorizontalGroup stamina = new HorizontalGroup();
-        stamina.addActor(staminaIcon);
-        stamina.addActor(staminaBar);
-        upperLeft.addActor(stamina);
+        staminaLabel = new Label("", style);
+        staminaLabel.setAlignment(Align.bottom);
 
-        HorizontalGroup mana = new HorizontalGroup();
-        mana.addActor(manaIcon);
-        mana.addActor(manaBar);
-        upperLeft.addActor(mana);
+        manaLabel = new Label("", style);
+        manaLabel.setAlignment(Align.bottom);
 
-        stage.addActor(consoleSystem.getConsole());
-        stage.addActor(upperLeft);
+        stage.addActor(rootTable);
+        rootTable.setFillParent(true);
+        rootTable.defaults().top().left();
+        rootTable.top().left();
+
+        rootTable.add(healthIcon);
+        rootTable.stack(healthBar, healthLabel).height(healthBar.getHeight()).expandX();
+        rootTable.row();
+        rootTable.add(staminaIcon);
+        rootTable.stack(staminaBar, staminaLabel).height(staminaBar.getHeight()).expandX();
+        rootTable.row();
+        rootTable.add(manaIcon);
+        rootTable.stack(manaBar, manaLabel).height(manaBar.getHeight()).expandX();
+        rootTable.row();
+        rootTable.add(consoleSystem.getConsole()).expandY().bottom().colspan(3);
 
         resize();
     }
 
     @Override
     protected void processSystem() {
-        healthBar.setText(playerSystem.getPlayer().healthCurrentHealth() + "/" + playerSystem.getPlayer().healthMaxHealth());
-        staminaBar.setText("Stamina");
-        manaBar.setText("Mana");
+        updateText();
         stage.draw();
     }
 
     public void resize() {
         ((OrthographicCamera) stage.getCamera()).setToOrtho(false, Gdx.graphics.getWidth() / Settings.UI_SCALE, Gdx.graphics.getHeight() / Settings.UI_SCALE);
 
-        upperLeft.setPosition(0, Gdx.graphics.getHeight() / Settings.UI_SCALE);
-        upperLeft.validate();
-
+        rootTable.validate();
         healthIcon.reposition();
         healthBar.reposition();
         staminaIcon.reposition();
         staminaBar.reposition();
         manaIcon.reposition();
         manaBar.reposition();
+    }
 
-        consoleSystem.getConsole().setPosition(0, 0);
+    private void updateText() {
+        healthLabel.setText(playerSystem.getPlayer().healthCurrentHealth() + "/" + playerSystem.getPlayer().healthMaxHealth());
+        staminaLabel.setText("Stamina");
+        manaLabel.setText("Mana");
     }
 }

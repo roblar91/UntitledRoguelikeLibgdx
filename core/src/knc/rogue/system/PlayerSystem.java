@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class PlayerSystem extends PassiveSystem {
     private final static Logger LOGGER = Logger.getLogger(KeyboardInputSystem.class.getName());
     private E player;
-    private boolean playerTurn = true;
+    private boolean playerTurn = false;
 
     @Override
     protected void initialize() {

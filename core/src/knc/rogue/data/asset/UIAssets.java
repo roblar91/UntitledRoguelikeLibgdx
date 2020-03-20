@@ -9,7 +9,7 @@ public class UIAssets {
 
     public static Texture getHealthIcon() {
         if(healthIcon == null) {
-            healthIcon = new Texture("sprites/custom/health.png");
+            healthIcon = new Texture("sprites/custom/health_small.png");
         }
 
         return healthIcon;
@@ -17,7 +17,7 @@ public class UIAssets {
 
     public static Texture getStaminaIcon() {
         if(staminaIcon == null) {
-            staminaIcon = new Texture("sprites/custom/stamina.png");
+            staminaIcon = new Texture("sprites/custom/stamina_small.png");
         }
 
         return staminaIcon;
@@ -25,7 +25,7 @@ public class UIAssets {
 
     public static Texture getManaIcon() {
         if(manaIcon == null) {
-            manaIcon = new Texture("sprites/custom/mana.png");
+            manaIcon = new Texture("sprites/custom/mana_small.png");
         }
 
         return manaIcon;
